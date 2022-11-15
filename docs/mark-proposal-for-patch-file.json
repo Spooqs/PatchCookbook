@@ -1,0 +1,67 @@
+{
+	## Basic "schema" for the file. Each device will have a
+	## key. The recipes for that device are an array under it.
+	## (May want to rethink that. But it depends on M$L requirements).
+	"$$device" : {
+		"$$category" : [
+			{
+				"name" : "$$string",
+				"desc" : "$$string",
+				"steps" : [
+					{
+						"order" : "$$number",
+						"instructions" : "$$string",
+					}
+				]
+			}
+		]
+	}
+		
+	## Example for operator
+    "operator" : {
+		"Bass" : [
+			{
+				"name": "bass 1",
+				"desc": "please enter a desc here",
+				"steps":
+				[
+					{
+						"order": 1,
+						"instruction" : "twist the twisty knob"
+					},
+					{
+						"order": 2,
+						"instruction" : "Frem the distamp"
+					},
+					{
+						"order": 3,
+						"instruction" : "there is no step 3"
+					}
+				]
+			},
+			{
+				"name": "bass 2",
+				"desc": "please enter a desc2 here",
+				"steps":
+				[
+					{
+						"order": 1,
+						"instruction" : "a jump to the left"
+					},
+					{
+						"order": 2,
+						"instruction" : "a step to the right"
+					},
+					{
+						"order": 3,
+						"instruction" : "Put your hands on your hips"
+					}
+					{
+						"order": 4,
+						"instruction" : "Bring your knees in tight"
+					}
+				]
+			}
+		]
+	}
+}
