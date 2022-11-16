@@ -1,47 +1,102 @@
 #!/usr/bin/env python
 
 import argparse
-import hjson
+from   configparser import ConfigParser
 import json
 import os
 
 class Consolidator:
+    Metadata_keys = [ 'name', 'device', 'description', 'category' ]
+
+    Recipe_keys = {
+            'operator' : [ 'osc_a', 'osc_b', 'osc_c', 'osc_d', 'lfo', 'pitch', 'main', 'filter' ]
+            }
+
     def __init__(self, output_file) :
         self.output = output_file
         self.consolidated = {}
 
 
-    def _transform_data(self, data) :
+    def _add_meta_data(self, cfg_data, json_data) :
+        """
+        Deal with the metadata section.
+        """
+
+        req_keys = { k : 1 for k in self.Metadata_keys }
+
+        for ckey in cfg_data :
+            if (ckey in req_keys) :
+                json_data[ckey] = cfg_data[ckey]
+                del req_keys[ckey]
+            else :
+                print(f'ERROR: invalid key `{ckey}` in metadata section')
+                exit(101)
+
+        if req_keys :
+            print(f'ERROR: missing required key(s) in metadata section : {list(req_keys.keys())}')
+            exit(102)
+
+            
+        device_name = json_data['device']
+
+        if device_name not in self.Recipe_keys :
+            print(f'ERROR: unknown target device `{device_name}`')
+            exit(103)
+
+        # Add the skeleton to the the correct part of the pile
+        if device_name not in self.consolidated :
+            self.consolidated[device_name] = {}
+
+        device = self.consolidated[device_name]
+
+        if json_data['category'] not in device :
+            device[json_data['category']] = []
+
+        device[json_data['category']].append(json_data)
+
+    def _add_recipe(self, cfg_data, json_data) :
+
+        slot_names = self.Recipe_keys[json_data['device']]
+
+        recipe = {}
+        for s in cfg_data :
+            if s in slot_names :
+                recipe[s] = cfg_data[s]
+            else :
+                print(f"ERROR: invalid slot name for device {json_data['device']} : {s}")
+                exit(10)
+        json_data['recipe'] = recipe
+
+    def _transform_data(self, data : ConfigParser ) :
         """
         Add {data} to {consolidated}
-        '"""
+        """
 
-        if data['device'] not in self.consolidated :
-            self.consolidated[data['device']] = {}
+        new_data = {}
+        for section in data :
+            if section == 'patch' :
+                self._add_meta_data(data[section], new_data)
+            elif section == 'recipe' :
+                self._add_recipe(data[section], new_data)
+            elif section == 'DEFAULT' :
+                # This is a section added by the parser. Not in love with it.
+                pass
+            else :
+                print(f'ERROR: unknown section name "{section}"')
+                exit(11)
 
-        device = self.consolidated[data['device']] 
-
-        if data['category'] not in device :
-            device[data['category']] = []
-
-        category = device[data['category']]
-
-        # need to check uniqueness here
-        new_data = {
-                "name" : data["name"],
-                "desc" : data['description'],
-                "steps" : [ { "order" : k, "instruction" : v } for k,v in enumerate(data['steps'])]
-            }
-
-        category.append(new_data)
 
         return True
 
     def consolidate(self, input_file_name) :
 
         print(f'LOG: processing {input_file_name}')
-        data = hjson.load(open(input_file_name, "r"))
-        self._transform_data(data)
+
+        cfg = ConfigParser()
+        if not cfg.read(input_file_name) :
+            print(f'ERROR: failure reading recipe fron file {input_file_name}')
+            exit(10)
+        self._transform_data(cfg)
 
     def write_data(self) :
         self.output.write(json.dumps(self.consolidated, indent=2))
@@ -84,8 +139,8 @@ for i in args.input :
             print(f'LOG : toppath = {toppath}')
             for f in filenames :
                 print(f'LOG : file = {f}')
-                # only process if not a hidden file and looks like hjson
-                if f[0] != '.' and os.path.splitext(f)[1] == '.hjson' :
+                # only process if not a hidden file and looks like a recipe
+                if f[0] != '.' and os.path.splitext(f)[1] == '.recipe' :
                     c.consolidate(os.path.join(toppath, f))
 
     else :

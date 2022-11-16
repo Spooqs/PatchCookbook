@@ -1,0 +1,16 @@
+[patch]
+device : operator
+category : Lead
+
+name : lead-thing
+description : A figment of your imagination
+
+[recipe]
+osc_a : A should be set to something
+osc_b : B should be set to something
+osc_c : Something different with C
+osc_d : leave this alone
+lfo : Its a jump to the left
+# no filter
+main :  And a step to right
+pitch : And pull your knees in tight

@@ -1,0 +1,16 @@
+[patch]
+device : operator
+category : Bass
+
+name : bass 1
+description : This is my cool bass sound
+
+[recipe]
+osc_a : Do something with A
+osc_b : Do something with B
+osc_c : Something different with C
+osc_d : Don't even THINK about D
+lfo : I mean sure, if you want
+main :  That is the name of the game
+filter : Drive this with the LFO
+pitch : Take one down, pass it around
