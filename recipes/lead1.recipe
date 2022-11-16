@@ -1,6 +1,10 @@
 [patch]
-device : operator
-category : Lead
+
+# This will be normaizled to 'operator'
+device : OpERAtor
+
+# This will be normalized to 'Lead'
+category : lEaD
 
 name : lead-thing
 description : A figment of your imagination
@@ -11,6 +15,6 @@ osc_b : B should be set to something
 osc_c : Something different with C
 osc_d : leave this alone
 lfo : Its a jump to the left
-# no filter
+# no filter. Hopefully it will show 'Off' in the patches.json file
 main :  And a step to right
 pitch : And pull your knees in tight
