@@ -33,11 +33,12 @@ class Consolidator:
                 exit(101)
 
         if req_keys :
-            print(f'ERROR: missing required key(s) in metadata section : {list(req_keys.keys())}')
+            print(f'ERROR: missing required key(s) in patch section : {list(req_keys.keys())}')
             exit(102)
 
             
-        device_name = json_data['device']
+        device_name = json_data['device'].lower()
+        json_data['device'] = device_name
 
         if device_name not in self.Recipe_keys :
             print(f'ERROR: unknown target device `{device_name}`')
@@ -49,10 +50,12 @@ class Consolidator:
 
         device = self.consolidated[device_name]
 
-        if json_data['category'] not in device :
-            device[json_data['category']] = []
+        category_name = json_data['category'].lower().capitalize()
+        json_data['category'] = category_name
+        if category_name not in device :
+            device[category_name] = []
 
-        device[json_data['category']].append(json_data)
+        device[category_name].append(json_data)
 
     def _add_recipe(self, cfg_data, json_data) :
 
@@ -65,6 +68,11 @@ class Consolidator:
             else :
                 print(f"ERROR: invalid slot name for device {json_data['device']} : {s}")
                 exit(10)
+
+        for s in slot_names :
+            if s not in recipe or not recipe[s] :
+                recipe[s] = 'Off'
+
         json_data['recipe'] = recipe
 
     def _transform_data(self, data : ConfigParser ) :
