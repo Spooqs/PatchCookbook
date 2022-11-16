@@ -1,0 +1,16 @@
+[patch]
+device : operator
+category : Bass
+
+name : bass 2
+description : This is my other cool bass sound
+
+[recipe]
+osc_a : A should be set to something
+osc_b : B should be set to something
+osc_c : Something different with C
+osc_d : I forgot what you need to do with D
+lfo : Its a jump to the left
+main :  And a step to right
+filter : Put your hands on your hip
+pitch : And pull your knees in tight
