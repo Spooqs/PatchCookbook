@@ -13,7 +13,7 @@ OperatorCookbook is a Max4Live (c) device that you put in the same track as the
 operator and gives you guidance on how to create all sorts of sounds using
 operator.
 
-![app ui](https://github.com/Spooqs/OperatorCookbook/blob/main/docs/ocb_mock2.png?raw=true)
+![app ui](https://github.com/Spooqs/OperatorCookbook/blob/main/docs/ocb_mock2.png)
 
 Each of those slots will be filled will guidelines on how to configure that
 section of the operator device.
