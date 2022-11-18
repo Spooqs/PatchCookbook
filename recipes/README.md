@@ -1,6 +1,6 @@
-#Recipes
+# Recipes
 
-##Syntax
+## Syntax
 
 Recipes are simple INI style files. There are two sections
 that are required - patch and recipe. No other sections are allowed.
