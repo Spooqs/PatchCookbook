@@ -63,7 +63,7 @@ class Consolidator:
         if patch_name not in  device[category_name] :
             device[category_name].update({patch_name : json_data})
         else :
-            print(f'ERROR: duplicate patch name `{patch_name}` in {list} for `{device}`.`{category}`')
+            print(f'ERROR: duplicate patch name `{patch_name}` for `{device}`.`{category}`')
             exit(110)
 
 
@@ -118,11 +118,15 @@ class Consolidator:
 
     def write_data(self) :
         # need to rewrite the data a bit
+        # sort the keys for the patches. dictionaries are ordered
+        # by default. the json module perserves that order on export
+        # hopefully m4l perserves it on load.
         for d, dv in self.consolidated.items():
             for c in dv :
                 cv = dv[c]
                 pnames = sorted(cv.keys())
-                dv[c] = [ cv[p] for p in pnames ]
+                dv[c] = {}
+                dv[c] = { p : cv[p] for p in pnames } 
         self.output.write(json.dumps(self.consolidated, indent=2))
 
 

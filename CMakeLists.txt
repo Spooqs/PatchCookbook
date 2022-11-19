@@ -13,4 +13,6 @@ add_custom_command(
     VERBATIM
     )
 
-add_custom_target(patch_file ALL DEPENDS patches.json)
+add_custom_target(patch_file ALL 
+    DEPENDS patches.json ${CMAKE_CURRENT_SOURCE_DIR}/src/consolidate/consolidate.py
+)
