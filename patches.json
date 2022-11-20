@@ -1,57 +1,56 @@
 {
-	"operator" : 	{
-		"Bass" : [ 			{
-				"device" : "operator",
-				"category" : "Bass",
-				"name" : "bass 2",
-				"description" : "This is my other cool bass sound",
-				"recipe" : 				{
-					"osc_a" : "A should be set to something",
-					"osc_b" : "B should be set to something",
-					"osc_c" : "Something different with C",
-					"osc_d" : "I forgot what you need to do with D",
-					"lfo" : "Its a jump to the left",
-					"main" : "And a step to right",
-					"filter" : "Put your hands on your hip",
-					"pitch" : "And pull your knees in tight"
-				}
-
-			}
-, 			{
-				"device" : "operator",
-				"category" : "Bass",
-				"name" : "bass 1",
-				"description" : "This is my cool bass sound",
-				"recipe" : 				{
-					"osc_a" : "Do something with A",
-					"osc_b" : "Do something with B",
-					"osc_c" : "Something different with C",
-					"osc_d" : "Don't even THINK about D",
-					"lfo" : "I mean sure, if you want",
-					"main" : "That is the name of the game",
-					"filter" : "Drive this with the LFO",
-					"pitch" : "Take one down, pass it around"
-				}
-
-			}
- ],
-		"Lead" : [ 			{
-				"device" : "operator",
-				"category" : "Lead",
-				"name" : "lead-thing",
-				"description" : "A figment of your imagination",
-				"recipe" : 				{
-					"osc_a" : "A should be set to something",
-					"osc_b" : "B should be set to something",
-					"osc_c" : "Something different with C",
-					"osc_d" : "leave this alone",
-					"lfo" : "Its a jump to the left",
-					"main" : "And a step to right",
-					"pitch" : "And pull your knees in tight"
-				}
-
-			}
- ]
-	}
-
+  "operator": {
+    "Bass": {
+      "bass 1": {
+        "device": "operator",
+        "category": "Bass",
+        "name": "bass 1",
+        "description": "This is my cool bass sound",
+        "recipe": {
+          "osc_a": "Do something with A",
+          "osc_b": "Do something with B",
+          "osc_c": "Something different with C",
+          "osc_d": "Don't even THINK about D",
+          "lfo": "I mean sure, if you want",
+          "main": "That is the name of the game",
+          "filter": "Drive this with the LFO",
+          "pitch": "Take one down, pass it around"
+        }
+      },
+      "bass 2": {
+        "device": "operator",
+        "category": "Bass",
+        "name": "bass 2",
+        "description": "This is my other cool bass sound",
+        "recipe": {
+          "osc_a": "A should be set to something",
+          "osc_b": "B should be set to something",
+          "osc_c": "Something different with C",
+          "osc_d": "I forgot what you need to do with D",
+          "lfo": "Its a jump to the left",
+          "main": "And a step to right",
+          "filter": "Put your hands on your hip",
+          "pitch": "And pull your knees in tight"
+        }
+      }
+    },
+    "Lead": {
+      "lead-thing": {
+        "device": "operator",
+        "category": "Lead",
+        "name": "Monophonic Glide",
+        "description": "Lead sound fundamentals",
+        "recipe": {
+          "osc_a": "Any wave shape, add some attack, find the sweet spot",
+          "osc_b": "Experiment",
+          "osc_c": "Experiment",
+          "osc_d": "Experiment",
+          "lfo": "Add attack to the envelope and target 1-2 Oscs and the filter to get a 'singing' pitch shift to held notes Add attack to the envelope and target 1-2 Oscs and the filter to get a 'singing' pitch shift to held notesAdd attack to the envelope and target 1-2 Oscs and the filter to get a 'singing' pitch shift to held notes Add attack to the envelope and target 1-2 Oscs and the filter to get a 'singing' pitch shift to held notes Add attack to the envelope and target 1-2 Oscs and the filter to get a 'singing' pitch shift to held notesAdd attack to the envelope and target 1-2 Oscs and the filter to get a 'singing' pitch shift to held notes",
+          "main": "One voice, monophonic",
+          "pitch": "Activate Glide, experiment with time setting",
+          "filter": "Off"
+        }
+      }
+    }
+  }
 }

@@ -6,10 +6,11 @@ setoutletassist(0, "osc_a text")
 setoutletassist(1, "osc_b text")
 setoutletassist(2, "osc_c text")
 setoutletassist(3, "osc_d text")
-setoutletassist(4, "main text")
-setoutletassist(5, "filter text")
-setoutletassist(6, "lfo text")
-setoutletassist(7, "pitch text")
+setoutletassist(4, "lfo text")
+setoutletassist(5, "pitch text")
+setoutletassist(6, "filter text")
+setoutletassist(7, "main text")
+
 setoutletassist(8, "dictionary")
 
 var patch_name = null;
@@ -43,7 +44,7 @@ function bang() {
 			return null;
 		}
 		
-		post("patchDict is a " + catDict.gettype(target_category_name) + "\n")
+		post("patchDict is a " + catDict.gettype(patch_name) + "\n")
 		
 		var recipeDict = patchDict.get("recipe")
 		
@@ -52,16 +53,16 @@ function bang() {
 			return null;
 		}
 		
-		post("recipeDict is a " + patchDict.gettype(target_category_name) + "\n");
+		post("recipeDict is a " + patchDict.gettype(patch_name) + "\n");
 		
-		outlet(0, "text", recipeDict.get("osc_a"));
-		outlet(1, "text", recipeDict.get("osc_b"));
-		outlet(2, "text", recipeDict.get("osc_c"));
-		outlet(3, "text", recipeDict.get("osc_d"));
-		outlet(4, "text", recipeDict.get("main"));	
-		outlet(5, "text", recipeDict.get("filter"));	
-		outlet(6, "text", recipeDict.get("lfo"));	
-		outlet(7, "text", recipeDict.get("pitch"));
+		outlet(0, "set", recipeDict.get("osc_a"));
+		outlet(1, "set", recipeDict.get("osc_b"));
+		outlet(2, "set", recipeDict.get("osc_c"));
+		outlet(3, "set", recipeDict.get("osc_d"));
+		outlet(4, "set", recipeDict.get("lfo"));	
+		outlet(5, "set", recipeDict.get("pitch"));	
+		outlet(6, "set", recipeDict.get("filter"));	
+		outlet(7, "set", recipeDict.get("main"));
 		
 		outlet(8, "dictionary", patchDict.name);
 		
