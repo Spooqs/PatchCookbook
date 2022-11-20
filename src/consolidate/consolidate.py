@@ -17,7 +17,7 @@ class Consolidator:
         self.consolidated = {}
 
 
-    def _add_meta_data(self, cfg_data, json_data) :
+    def _add_meta_data(self, input_file_name : str, cfg_data, json_data) :
         """
         Deal with the metadata section.
         """
@@ -35,6 +35,9 @@ class Consolidator:
         if req_keys :
             print(f'ERROR: missing required key(s) in patch section : {list(req_keys.keys())}')
             exit(102)
+
+        # record which file this came from.
+        json_data['file'] = os.path.basename(input_file_name)
 
             
         device_name = json_data['device'].lower()
@@ -63,7 +66,7 @@ class Consolidator:
         if patch_name not in  device[category_name] :
             device[category_name].update({patch_name : json_data})
         else :
-            print(f'ERROR: duplicate patch name `{patch_name}` for `{device}`.`{category}`')
+            print(f'ERROR: duplicate patch name `{patch_name}` for `{device_name}`.`{category_name}`')
             exit(110)
 
 
@@ -85,7 +88,7 @@ class Consolidator:
 
         json_data['recipe'] = recipe
 
-    def _transform_data(self, data : ConfigParser ) :
+    def _transform_data(self, input_file_name : str, data : ConfigParser ) :
         """
         Add {data} to {consolidated}
         """
@@ -93,7 +96,7 @@ class Consolidator:
         new_data = {}
         for section in data :
             if section == 'patch' :
-                self._add_meta_data(data[section], new_data)
+                self._add_meta_data(input_file_name, data[section], new_data)
             elif section == 'recipe' :
                 self._add_recipe(data[section], new_data)
             elif section == 'DEFAULT' :
@@ -114,7 +117,7 @@ class Consolidator:
         if not cfg.read(input_file_name) :
             print(f'ERROR: failure reading recipe fron file {input_file_name}')
             exit(10)
-        self._transform_data(cfg)
+        self._transform_data(input_file_name, cfg)
 
     def write_data(self) :
         # need to rewrite the data a bit

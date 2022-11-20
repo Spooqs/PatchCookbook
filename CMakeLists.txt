@@ -10,6 +10,7 @@ find_file(PYTHON NAMES python python3)
 add_custom_command(
     OUTPUT patches.json
     COMMAND ${PYTHON} ${CMAKE_CURRENT_SOURCE_DIR}/src/consolidate/consolidate.py --out patches.json  ${CMAKE_CURRENT_SOURCE_DIR}/recipes
+    DEPENDS ${CMAKE_CURRENT_SOURCE_DIR}/src/consolidate/consolidate.py
     VERBATIM
     )
 
