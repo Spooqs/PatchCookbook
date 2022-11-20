@@ -6,7 +6,7 @@ device : Operator
 # This will be normalized to 'Lead'
 category : Lead
 
-name : Glide Monosynth
+name : Glide Monosynth 2
 description : Monosynth with a bit of glide
 
 [recipe]
