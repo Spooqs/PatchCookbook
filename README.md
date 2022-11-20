@@ -1,4 +1,4 @@
-# OperatorCookbook
+# PatchCookbook
 
 
 M4L Device for displaying device patch notes and instructions
@@ -6,14 +6,14 @@ M4L Device for displaying device patch notes and instructions
 ## Overview
 
 Ever been sitting in Ableton Live trying figure out how to make a simple Reese
-Bass ? Tired of switch between windows (and may headsets) as you try to watch a
+Bass ? Tired of switching between windows (and may headsets) as you try to watch a
 YouTube video and teak an operator device at the same time ?
 
-OperatorCookbook is a Max4Live (c) device that you put in the same track as the
+PatchCookbook is a Max4Live (c) device that you put in the same track as the
 operator and gives you guidance on how to create all sorts of sounds using
 operator.
 
-![app ui](https://github.com/Spooqs/OperatorCookbook/blob/main/docs/ocb_mockup2.png)
+![app ui](https://github.com/Spooqs/PatchCookbook/blob/main/docs/ocb_mockup2.png)
 
 Each of those slots will be filled will guidelines on how to configure that
 section of the operator device.
