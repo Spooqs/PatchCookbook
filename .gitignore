@@ -1,2 +1,5 @@
 *.swp
-build/
+
+build*/
+
+__pycache__/

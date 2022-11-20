@@ -16,4 +16,14 @@ add_custom_command(
 
 add_custom_target(patch_file ALL 
     DEPENDS patches.json ${CMAKE_CURRENT_SOURCE_DIR}/src/consolidate/consolidate.py
-)
+    )
+
+enable_testing()
+
+add_test(NAME PythonTests
+    COMMAND ${PYTHON} -m unittest discover ${CMAKE_CURRENT_SOURCE_DIR}/tests
+    )
+
+set_property(TEST PythonTests
+    PROPERTY ENVIRONMENT PYTHONPATH=${CMAKE_CURRENT_SOURCE_DIR}/src
+    )
