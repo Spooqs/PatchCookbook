@@ -2,15 +2,15 @@
 device : operator
 category : Bass
 
-name : bass 2
-description : This is my other cool bass sound
+name : Reese Bass
+description : Growling, full bodied bass sound
 
 [recipe]
-osc_a : A should be set to something
-osc_b : B should be set to something
-osc_c : Something different with C
-osc_d : I forgot what you need to do with D
-lfo : Its a jump to the left
-main :  And a step to right
-filter : Put your hands on your hip
-pitch : And pull your knees in tight
+osc_a : Sine wavefom with the coarse setting at 0.5. Play this patch in the bass range (C0-C2). Use user waveform to add to mids and top end content. 
+osc_b : Saw, triangle or square waveform to give the bass a bit more top end to cut through the mix better. Use user waveform to add top end content. 
+osc_c : White noise waveform to give the bass more top end content to help cut through the mix.
+osc_d : Off
+lfo : Target the filter.
+filter : Use a notch filter - this is integral in the Neuro bass sound. Experiment with the position of the filter along with it's shaper and applied drive.
+main :  Voices set to 1. 
+pitch : Add Glide to give the bass a pitch shifting quality between held notes

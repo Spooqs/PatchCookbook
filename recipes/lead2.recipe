@@ -1,0 +1,20 @@
+[patch]
+
+# This will be normaizled to 'operator'
+device : Operator
+
+# This will be normalized to 'Lead'
+category : Lead
+
+name : Glide Monosynth
+description : Monosynth with a bit of glide
+
+[recipe]
+osc_a : Sine wave with some attack. Find the sweet spot as you go.
+osc_b : Sine wave with some attack. Find the sweet spot as you go.
+osc_c : White Noise with some attack. 
+osc_d : Off
+lfo : Give the envelope a long attack and send the LFO to specifc oscillators to give the tone a pitch-shifting 'singing' quality
+filter: Pull back on the filter frequency to mellow the white noise
+main :  Set voices to 1. Algorithm 8. 
+pitch : Activate Glide, set time to ~50ms. Tweak to  your liking

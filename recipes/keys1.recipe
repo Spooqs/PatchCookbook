@@ -1,0 +1,20 @@
+[patch]
+
+# This will be normaizled to 'operator'
+device : Operator
+
+# This will be normalized to 'Lead'
+category : Lead
+
+name : FM Keys - Basic
+description : Expressive FM Keys
+
+[recipe]
+osc_a : Sine wave with short attack (<5ms) and pronounced decay time (~200ms) and sustain (~-20db). Turn up the Vel setting to refine sesitivity and expressive quality. User wavefom to add higher harmonics.
+osc_b : Copy waveform settings from Osc A and tweak. Turn up Vel. Mixing Osc B and A gives the sound a full, expressive body.
+osc_c : Plucky, percussive sound like a keys' hammer. Very short attack and decay with -inf sustain. 
+osc_d : Off
+lfo : Give the envelope a long attack and send the LFO to specifc oscillators to give the tone a pitch-shifting 'singing' quality. Experiment!
+filter: User choice - can define any filter and shaper with drive to further define character and quality of the tone.
+main :  Algo 1. Experiment with  aftertouch and velocity to give the keys a unique character of their own.
+pitch : The pitch envelope can be used as a secondary LFO by pointing it's Dest. B at a desired parameter, adding more movement to the sound.
