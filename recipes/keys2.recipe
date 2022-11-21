@@ -1,0 +1,20 @@
+[patch]
+
+# This will be normaizled to 'operator'
+device : Operator
+
+# This will be normalized to 'Lead'
+category : Keys
+
+name : FM Pad - Basic
+description : FM Pad with long attack and decay
+
+[recipe]
+osc_a : Sine wave with very long attack (>500ms), long decay time (>500ms) and slight duck in sustain to create a long soft drone
+osc_b : Copy waveform settings from Osc A and tweak. Slight variations in multiple waveforms over time creates a complex, evolving sound to the patch. Experiment with using different waveform.
+osc_c : Copy waveform settings from Osc A and B and tweak. Slight variations in multiple waveforms over time creates a complex, evolving sound to the patch. Experiment with using different waveform.
+osc_d : Off
+lfo : Give the envelope a long attack and send the LFO to specifc oscillators to give the tone a pitch-shifting 'singing' quality. Experiment!
+filter: User choice - can define any filter and shaper with drive to further define character and quality of the tone.
+main :  Algo 1. Experiment with  aftertouch and velocity to give the keys a unique character of their own.
+pitch : The pitch envelope can be used as a secondary LFO by pointing it's Dest. B at a desired parameter, adding more movement to the sound.
