@@ -4,7 +4,7 @@
 device : Operator
 
 # This will be normalized to 'Lead'
-category : Lead
+category : Keys
 
 name : FM Keys - Basic
 description : Expressive FM Keys

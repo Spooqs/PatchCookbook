@@ -2,7 +2,11 @@
 device : operator
 category : Bass
 
+<<<<<<< Updated upstream
 name : Reese Bass - 2
+=======
+name : Neuro Bass
+>>>>>>> Stashed changes
 description : Growling, full bodied bass sound
 
 [recipe]
@@ -11,6 +15,6 @@ osc_b : Saw, triangle or square waveform to give the bass a bit more top end to 
 osc_c : White noise waveform to give the bass more top end content to help cut through the mix.
 osc_d : Off
 lfo : Target the filter.
-filter : Use a notch filter - this is integral in the Neuro bass sound. Experiment with the position of the filter along with it's shaper and applied drive.
+filter : Use a notch filter instead of a low pass - this is integral in the Neuro bass sound. Experiment with the position of the filter along with it's shaper and applied drive.
 main :  Voices set to 1. 
 pitch : Add Glide to give the bass a pitch shifting quality between held notes

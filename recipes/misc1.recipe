@@ -1,6 +1,6 @@
 [patch]
 device : operator
-category : Drum
+category : Misc
 
 name : Sub Bass Drop
 description : Bass Drop Effect Sound for transitions
