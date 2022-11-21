@@ -2,11 +2,7 @@
 device : operator
 category : Bass
 
-<<<<<<< Updated upstream
-name : Reese Bass - 2
-=======
 name : Neuro Bass
->>>>>>> Stashed changes
 description : Growling, full bodied bass sound
 
 [recipe]
