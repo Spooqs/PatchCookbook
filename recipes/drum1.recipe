@@ -10,7 +10,7 @@ osc_a : This osc is the fundamental tone of the kick. Consider setting the coars
 osc_b : Fast attack and decay to simulate the sound of a beater striking a drum head 
 osc_c : White noise waveform with a little attack to simulate the noise of the drum head. The top end content will also help the kick cut through the mix.
 osc_d : Off
-lfo : Target the filter.
+lfo : Off
 filter : Experiment with the position of the filter along with it's shaper and applied drive to give character to the kick. 
 main :  Voices set to 1. Algorithm 1 works well, but others can produce unique kick sounds with the same fundamental approach.  
 pitch : Turn the Pitch Env up with the envelope set to a high peak with a fast decay. This pitch envelope simulates the warping of a drum head when it is struck by a beater.

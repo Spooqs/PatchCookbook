@@ -1,0 +1,16 @@
+[patch]
+device : operator
+category : Drum
+
+name : FM Hi Hat
+description : FM Hi Hat (closed or open)
+
+[recipe]
+osc_a : Snappy envelope that decays quickly. Use higher coarse value to tune the hat higher and give a brighter tone. The envelope decay of both Osc A and B determines the 'openess' of the hat sound.
+osc_b : An additional quickly-decaying envelope with a higher coarse level to give body to the hat's core tone. Consider a waveform with more harmonics than sine to add brightness to the sound.
+osc_c : White noise waveform with a little attack to simulate the noise of the drum head. The top end content will also help the kick cut through the mix.
+osc_d : 
+lfo : Off.
+filter : Experiment with the position of the filter along with it's shaper and applied drive to give character to the kick. 
+main :  Voices set to 1. Algorithm 1 works well, but others can produce unique kick sounds with the same fundamental approach.  
+pitch : Turn the Pitch Env up with the envelope set to a high peak with a fast decay. Be sure the sustain is 0 so the bass is tuned correctly. This pitch envelope simulates the warping of a drum head when it is struck by a beater.

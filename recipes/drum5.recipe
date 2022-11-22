@@ -1,0 +1,17 @@
+[patch]
+device : operator
+category : Drum
+
+name : FM Tom Drum
+description : Simple Tom sound from FM synthesis.
+
+[recipe]
+osc_a : This osc is the fundamental tone of the tom. Consider setting the coarse to 0.5 for a deeper sound. Use a simple sine wave to start. If pitch is not fixed, follow the track's root or bassline. 
+osc_b : Fast attack and decay to simulate the sound of a beater striking a drum head 
+osc_c : White noise waveform with a little attack to simulate the noise of the drum head. The top end content will also help the tom to cut through the mix.
+osc_d : Off
+lfo : Off
+filter : Experiment with the position of the filter along with it's shaper and applied drive to give character to the kick. 
+main :  Voices set to 1. Algorithm 1 works well, but others can produce unique kick sounds with the same fundamental approach.  
+pitch : Turn the Pitch Env up, but not all the way. This will keep the toms grounded in a common percussive tone. Pitch envelope should have a high peak and decay should be pulled out to the desired length. 
+

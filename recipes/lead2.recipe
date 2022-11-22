@@ -6,11 +6,11 @@ device : Operator
 # This will be normalized to 'Lead'
 category : Lead
 
-name : Glide Monosynth 2
-description : Monosynth with a bit of glide
+name : FM Plucks
+description : Plucky, percussive, harp-like lead tone
 
 [recipe]
-osc_a : Sine wave with some attack. Find the sweet spot as you go.
+osc_a : Sine wave with short attack and decay. Sustain should be very low to -inf. Release can be 0, but also produces an interesting effect when high.
 osc_b : Sine wave with some attack. Find the sweet spot as you go.
 osc_c : White Noise with some attack. 
 osc_d : Off
