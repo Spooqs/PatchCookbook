@@ -2,5 +2,5 @@
       display: grid;
       grid-template-columns: 10% 40% 10% 40%;
       grid-gap: 20px;
-      place-items: left;
+      place-items: start center;
     }

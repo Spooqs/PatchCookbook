@@ -1,19 +1,44 @@
 <h1>{{title}}</h1>
 
-<select name="device" id="device-select">
-    <option value="operator">operator</option>
-</select>
+<div class="form-group">
+    <!--- Device ---->
+    <label for="deviceControl">Device</label>
+    <ng-select id="deviceControl" [formControl]="deviceControl"
+                [searchable]="false"
+                [clearable]="false"
+                placeholder="Select Device"
+                appendTo="body"
+        [items]="devices" (change)="onDeviceChange($event)">
+    </ng-select>
 
-<select name="category" id="category-select">
-    <option value="Lead">Lead</option>
-    <option value="Bass">Bass</option>
-</select>
+    <!-- Category -->
+    <label for="categoryControl">Category</label>
+    <ng-template [ngIf]="is_device_selected" [ngIfElse]="elseCategoryBlock">
+        <ng-select id="categoryControl" [formControl]="categoryControl"
+                [searchable]="false"
+                [clearable]="false"
+                placeholder="Select Category"
+                appendTo="body"
+            [items]="categories" (change)="onCategoryChange($event)">
+        </ng-select>
+    </ng-template>
+    <ng-template #elseCategoryBlock><label class="block-label">Select Device First</label></ng-template>
+    
+    <!-- Patch -->
+    <label for="patchControl">Patch</label>
+    <ng-template [ngIf]="is_category_selected" [ngIfElse]="elsePatchBlock">
+        <ng-select id="patchControl" [formControl]="patchControl"
+                [searchable]="false"
+                [clearable]="false"
+                placeholder="Select Patch"
+                appendTo="body"
+            [items]="patches" (change)="onPatchChange($event)">
+        </ng-select>
+    </ng-template>
+    <ng-template #elsePatchBlock><label class="block-label">Select Category First</label></ng-template>
+</div>
 
-<select name="patch" id="patch-select">
-    <option value="patch1">Patch 1</option>
-    <option value="patch2">Patch 2</option>
-</select>
 
 <br>
 
-<patch-display></patch-display>
+<patch-display [slot_data]="slot_data"></patch-display>

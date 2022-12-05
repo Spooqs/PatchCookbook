@@ -1,6 +1,8 @@
 <div class="parent">
+    <ng-template [ngIf]="render_boxes">
     <ng-template ngFor let-slot [ngForOf]="slots">
-        <label>{{slot}}</label>
-        <label>Text for {{slot}}</label>
+        <label>{{slot_data[slot]["slot_name"]}}</label>
+        <label>{{slot_data[slot]["text"]}}</label>
+    </ng-template>
     </ng-template>
 </div>

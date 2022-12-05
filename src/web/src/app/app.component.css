@@ -1,0 +1,9 @@
+.form-group {
+    border-width : 2px;
+    border-style : solid;
+}
+
+
+.block-label {
+    display : block;
+}
