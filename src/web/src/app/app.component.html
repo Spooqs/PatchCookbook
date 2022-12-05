@@ -1,44 +1,56 @@
 <h1>{{title}}</h1>
 
-<div class="form-group">
+<mat-grid-list  cols="3" rowHeight="3:1" gutterSize="20">
     <!--- Device ---->
-    <label for="deviceControl">Device</label>
-    <ng-select id="deviceControl" [formControl]="deviceControl"
-                [searchable]="false"
-                [clearable]="false"
-                placeholder="Select Device"
-                appendTo="body"
-        [items]="devices" (change)="onDeviceChange($event)">
-    </ng-select>
+    <mat-grid-tile>
+        <div class="labelled-select">
+        <label for="deviceControl">Device</label>
+        <ng-select id="deviceControl" [formControl]="deviceControl"
+                    [searchable]="false"
+                    [clearable]="false"
+                    placeholder="Select Device"
+                    appendTo="body"
+            [items]="devices" (change)="onDeviceChange($event)">
+        </ng-select>
+        </div>
+    </mat-grid-tile>
 
     <!-- Category -->
-    <label for="categoryControl">Category</label>
-    <ng-template [ngIf]="is_device_selected" [ngIfElse]="elseCategoryBlock">
-        <ng-select id="categoryControl" [formControl]="categoryControl"
-                [searchable]="false"
-                [clearable]="false"
-                placeholder="Select Category"
-                appendTo="body"
-            [items]="categories" (change)="onCategoryChange($event)">
-        </ng-select>
-    </ng-template>
-    <ng-template #elseCategoryBlock><label class="block-label">Select Device First</label></ng-template>
+    <mat-grid-tile>
+        <div class="labelled-select">
+        <label for="categoryControl">Category</label>
+        <ng-template [ngIf]="is_device_selected" [ngIfElse]="elseCategoryBlock">
+            <ng-select id="categoryControl" [formControl]="categoryControl"
+                    [searchable]="false"
+                    [clearable]="false"
+                    placeholder="Select Category"
+                    appendTo="body"
+                [items]="categories" (change)="onCategoryChange($event)">
+            </ng-select>
+        </ng-template>
+        <ng-template #elseCategoryBlock><label class="block-label">Select Device First</label></ng-template>
+        </div>
+    </mat-grid-tile>
     
     <!-- Patch -->
-    <label for="patchControl">Patch</label>
-    <ng-template [ngIf]="is_category_selected" [ngIfElse]="elsePatchBlock">
-        <ng-select id="patchControl" [formControl]="patchControl"
-                [searchable]="false"
-                [clearable]="false"
-                placeholder="Select Patch"
-                appendTo="body"
-            [items]="patches" (change)="onPatchChange($event)">
-        </ng-select>
-    </ng-template>
-    <ng-template #elsePatchBlock><label class="block-label">Select Category First</label></ng-template>
-</div>
+    <mat-grid-tile>
+        <div class="labelled-select">
+        <label for="patchControl">Patch</label>
+        <ng-template [ngIf]="is_category_selected" [ngIfElse]="elsePatchBlock">
+            <ng-select id="patchControl" [formControl]="patchControl"
+                    [searchable]="false"
+                    [clearable]="false"
+                    placeholder="Select Patch"
+                    appendTo="body"
+                [items]="patches" (change)="onPatchChange($event)">
+            </ng-select>
+        </ng-template>
+        <ng-template #elsePatchBlock><label class="block-label">Select Category First</label></ng-template>
+        </div>
+    </mat-grid-tile>
+</mat-grid-list>
 
 
 <br>
 
-<patch-display [slot_data]="slot_data"></patch-display>
+<patch-display [slot_data]="slot_data" [patch_name]="patch_name" [patch_description]="patch_desc"></patch-display>

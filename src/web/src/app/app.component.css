@@ -7,3 +7,7 @@
 .block-label {
     display : block;
 }
+
+.labelled-select {
+    width : 100%;
+}

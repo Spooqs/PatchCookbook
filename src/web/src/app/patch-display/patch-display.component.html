@@ -1,8 +1,14 @@
-<div class="parent">
+<div class="parent chamfered-top">
     <ng-template [ngIf]="render_boxes">
+    <div class="light-blue full-width chamfered-top" >
+        <label class="side-pad black-large-font">{{patch_name}}</label>
+        <label class="side-pad black-large-font">{{patch_description}}</label>
+    </div>
     <ng-template ngFor let-slot [ngForOf]="slots">
-        <label>{{slot_data[slot]["slot_name"]}}</label>
-        <label>{{slot_data[slot]["text"]}}</label>
+        <div class="center-items">
+        <label class="{{slot_data[slot]['slot_name']}}"></label>
+        </div>
+        <label class="slot_instruction">{{slot_data[slot]["text"]}}</label>
     </ng-template>
     </ng-template>
 </div>

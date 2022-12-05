@@ -19,19 +19,20 @@ export class AppComponent implements OnInit {
 
     device_name = "--select--";
     is_device_selected  = false;
-    devices : string[] = Object.keys(Patches);
+    devices : string[] = Object.keys(Patches).filter(key => key != "default");
 
-    category_name  = "--select--";
     is_category_selected  = false;
     categories : string[] = [];
     cat_objs : any;
 
-    patch_name = "--select--";
     is_patch_selected = false;
     patches : string[] = [];
     patch_objs : any;
 
     patch : any;
+
+    patch_name : string = '';
+    patch_desc : string = '';
 
     slot_data :  { [key : string] : SlotData } = {};
 
@@ -47,8 +48,7 @@ export class AppComponent implements OnInit {
             this.is_device_selected = true;
             this.is_category_selected = false;
             this.is_patch_selected = false;
-            this.category_name = "--select--";
-            this.patch_name = "--select--";
+            this.categoryControl.setValue(null);
             // eslint-disable-next-line @typescript-eslint/no-explicit-any
             this.cat_objs = (Patches as any)[newValue];
             this.categories = Object.keys(this.cat_objs);
@@ -59,12 +59,14 @@ export class AppComponent implements OnInit {
         console.log(event);
         if (this.deviceControl.value && this.categoryControl.value) {
             let newValue = (event as unknown) as string;
-            this.category_name = newValue;
             this.is_category_selected = true;
             this.is_patch_selected = false;
-            this.patch_name = "--select--";
+            this.patchControl.setValue(null);
             this.patch_objs = this.cat_objs[newValue];
             this.patches = Object.keys(this.patch_objs);
+            this.slot_data = {};
+            this.patch_name = '';
+            this.patch_desc = '';
         }
     }
 
@@ -73,10 +75,11 @@ export class AppComponent implements OnInit {
         if (this.deviceControl.value && this.categoryControl.value && this.patchControl.value) {
             let newValue = (event as unknown) as string;
             this.is_patch_selected = true;
-            this.patch_name = newValue;
             this.patch = this.patch_objs[newValue];
             console.log(this.patch);
             this.slot_data = this.patch['recipe'];
+            this.patch_name = this.patch.name;
+            this.patch_desc = this.patch.description;
             
         }
     }

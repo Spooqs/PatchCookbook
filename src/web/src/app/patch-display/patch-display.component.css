@@ -1,6 +1,54 @@
 .parent {
       display: grid;
       grid-template-columns: 10% 40% 10% 40%;
-      grid-gap: 20px;
-      place-items: start center;
-    }
+      grid-gap: 0px;
+      align-items: stretch;
+      justify-items: stretch;
+      background-color: #32353C;
+      color: #F7F7F7;
+}
+
+.slot_instruction {
+    margin : 10px;
+    padding-left: 5pt;
+    padding-right: 5pt;
+    background-color: #333333;
+    border : 4px;
+    border-color: #48494C;
+    border-style: solid;
+    border-radius: 10px;
+}
+
+.center-items {
+    display: grid; align-items: center; justify-items: center;
+}
+
+.light-blue { background-color : #8DC5D7; }
+
+.full-width { grid-column : 1 / span 4; margin: 0px; padding-top: 5px; padding-bottom: 3px; }
+
+.side-pad { padding-left : 5em; padding-right: 5em; }
+
+.black-large-font { font-size: 18pt; color: black; }
+
+.chamfered-top { border-radius: 10px 10px 0 0; }
+
+.osc_d { background : #FFA600;  padding: 5px; padding-bottom : 1px; }
+label.osc_d::before { content : "D"; color: black; font-weight : bold; font-size : 20pt; }
+
+.osc_c { background : #5177E3;  padding: 5px; padding-bottom : 1px; }
+label.osc_c::before { content : "C"; color: black; font-weight : bold;  font-size : 20pt; }
+
+.osc_b { background : #21D2D8;  padding: 5px; padding-bottom : 1px; }
+label.osc_b::before { content : "B"; color: black; font-weight : bold;  font-size : 20pt; }
+
+.osc_a { background : #FAFF00;  padding: 5px; padding-bottom : 1px; }
+label.osc_a::before { content : "A"; color: black; font-weight : bold;  font-size : 20pt; }
+
+label.lfo::before { content : "LFO"; font-weight : bold;  width : 100%; font-size : 16pt; color: #F7F7F7; }
+
+label.main::before { content : "Main"; font-weight : bold; width : 100%; font-size : 16pt; color: #F7F7F7; }
+
+label.filter::before { content : "Filter"; font-weight : bold; width : 100%; font-size : 16pt; color: #F7F7F7; }
+
+label.pitch::before { content : "Pitch Env"; font-weight : bold;  width : 100%; font-size : 16pt; color: #F7F7F7; }
