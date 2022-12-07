@@ -1,54 +1,165 @@
 {
   "operator": {
-    "Bass": {
-      "bass 1": {
+    "Misc": {
+      "Sub Bass Drop": {
         "device": "operator",
-        "category": "Bass",
-        "name": "bass 1",
-        "description": "This is my cool bass sound",
+        "category": "Misc",
+        "name": "Sub Bass Drop",
+        "description": "Bass Drop Effect Sound for transitions",
+        "file": "misc1.recipe",
         "recipe": {
-          "osc_a": "Do something with A",
-          "osc_b": "Do something with B",
-          "osc_c": "Something different with C",
-          "osc_d": "Don't even THINK about D",
-          "lfo": "I mean sure, if you want",
-          "main": "That is the name of the game",
-          "filter": "Drive this with the LFO",
-          "pitch": "Take one down, pass it around"
+          "osc_a": "Sine wave with fast attack and high sustain so the note can be held. Add complexity with more harmonics in the user waveform.",
+          "osc_b": "Long attack which will add character to the 'landing' of the bass drop. Experiment with your waveform choice too",
+          "osc_c": "As with Osc B, adding more Oscs will add to the complexity and 'dirtiness' of the ending of the bass drop sound.",
+          "osc_d": "Off/Experiment",
+          "lfo": "Experiment here to add interest, movement and complextity. Endless possibilities based on the specifics of your sound.",
+          "filter": "Experiment with the position of the filter along with it's shaper and applied drive to give character to the overall tone.",
+          "main": "The time setting changes the global rate of all envelopes, this can help define the length of the effect. Experiment with algorithms",
+          "pitch": "Turn the Pitch Env up (experiment) with the envelope set to a high peak with a long decay. Make sure sustain is 0 so you land on the correct note."
+        }
+      }
+    },
+    "Drum": {
+      "FM Kick Drum": {
+        "device": "operator",
+        "category": "Drum",
+        "name": "FM Kick Drum",
+        "description": "Simple Kick sound from FM synthesis.",
+        "file": "drum1.recipe",
+        "recipe": {
+          "osc_a": "This osc is the fundamental tone of the kick. Consider setting the coarse to 0.5 for a deeper sound. Use a simple sine wave to start. If pitch is not fixed, follow the track's root or bassline.",
+          "osc_b": "Fast attack and decay to simulate the sound of a beater striking a drum head",
+          "osc_c": "White noise waveform with a little attack to simulate the noise of the drum head. The top end content will also help the kick cut through the mix.",
+          "osc_d": "Off",
+          "lfo": "Target the filter.",
+          "filter": "Experiment with the position of the filter along with it's shaper and applied drive to give character to the kick.",
+          "main": "Voices set to 1. Algorithm 1 works well, but others can produce unique kick sounds with the same fundamental approach.",
+          "pitch": "Turn the Pitch Env up with the envelope set to a high peak with a fast decay. This pitch envelope simulates the warping of a drum head when it is struck by a beater."
         }
       },
-      "bass 2": {
+      "FM Snare Drum": {
+        "device": "operator",
+        "category": "Drum",
+        "name": "FM Snare Drum",
+        "description": "Simple Snare sound from FM synthesis.",
+        "file": "drum2.recipe",
+        "recipe": {
+          "osc_a": "This osc is the fundamental tone of the snare. Use a wavefrom with more high end harmonics than a sine. Pitch should be fixed so the snare acts as a consistent anchor sound.",
+          "osc_b": "Fast attack and decay to simulate the sound of a beater striking a drum head",
+          "osc_c": "White noise waveform with a little attack to simulate the noise of the drum head. The top end content will also help the kick cut through the mix.",
+          "osc_d": "Off",
+          "lfo": "Off.",
+          "filter": "Experiment with the position of the filter along with it's shaper and applied drive to give character to the kick.",
+          "main": "Voices set to 1. Algorithm 1 works well, but others can produce unique kick sounds with the same fundamental approach.",
+          "pitch": "Turn the Pitch Env up with the envelope set to a high peak with a fast decay. This pitch envelope simulates the warping of a drum head when it is struck by a beater."
+        }
+      }
+    },
+    "Bass": {
+      "Neuro Bass": {
         "device": "operator",
         "category": "Bass",
-        "name": "bass 2",
-        "description": "This is my other cool bass sound",
+        "name": "Neuro Bass",
+        "description": "Growling, full bodied bass sound",
+        "file": "bass2.recipe",
         "recipe": {
-          "osc_a": "A should be set to something",
-          "osc_b": "B should be set to something",
-          "osc_c": "Something different with C",
-          "osc_d": "I forgot what you need to do with D",
-          "lfo": "Its a jump to the left",
-          "main": "And a step to right",
-          "filter": "Put your hands on your hip",
-          "pitch": "And pull your knees in tight"
+          "osc_a": "Sine wavefom with the coarse setting at 0.5. Play this patch in the bass range (C0-C2). Use user waveform to add to mids and top end content.",
+          "osc_b": "Saw, triangle or square waveform to give the bass a bit more top end to cut through the mix better. Use user waveform to add top end content.",
+          "osc_c": "White noise waveform to give the bass more top end content to help cut through the mix.",
+          "osc_d": "Off",
+          "lfo": "Target the filter.",
+          "filter": "Use a notch filter instead of a low pass - this is integral in the Neuro bass sound. Experiment with the position of the filter along with it's shaper and applied drive.",
+          "main": "Voices set to 1.",
+          "pitch": "Add Glide to give the bass a pitch shifting quality between held notes"
+        }
+      },
+      "Reese Bass": {
+        "device": "operator",
+        "category": "Bass",
+        "name": "Reese Bass",
+        "description": "Growling, full bodied bass sound",
+        "file": "bass1.recipe",
+        "recipe": {
+          "osc_a": "Sine wavefom with the coarse setting at 0.5. Play this patch in the bass range (C0-C2). Use user waveform to add to mids and top end content.",
+          "osc_b": "Saw, triangle or square waveform to give the bass a bit more top end to cut through the mix better. Use user waveform to add top end content.",
+          "osc_c": "White noise waveform to give the bass more top end content to help cut through the mix.",
+          "osc_d": "Off",
+          "lfo": "Target the filter.",
+          "filter": "Pull back on filter frequency to tame high end. Use filter and shaper with drive to give the bass a more aggressive tone. Movement of the filter top end helps define the Reese sound.",
+          "main": "Voices set to 1.",
+          "pitch": "Add Glide to give the bass a pitch shifting quality between held notes"
+        }
+      }
+    },
+    "Keys": {
+      "FM Keys - Basic": {
+        "device": "operator",
+        "category": "Keys",
+        "name": "FM Keys - Basic",
+        "description": "Expressive FM Keys",
+        "file": "keys1.recipe",
+        "recipe": {
+          "osc_a": "Sine wave with short attack (<5ms) and pronounced decay time (~200ms) and sustain (~-20db). Turn up the Vel setting to refine sesitivity and expressive quality. User wavefom to add higher harmonics.",
+          "osc_b": "Copy waveform settings from Osc A and tweak. Turn up Vel. Mixing Osc B and A gives the sound a full, expressive body.",
+          "osc_c": "Plucky, percussive sound like a keys' hammer. Very short attack and decay with -inf sustain.",
+          "osc_d": "Off",
+          "lfo": "Give the envelope a long attack and send the LFO to specifc oscillators to give the tone a pitch-shifting 'singing' quality. Experiment!",
+          "filter": "User choice - can define any filter and shaper with drive to further define character and quality of the tone.",
+          "main": "Algo 1. Experiment with  aftertouch and velocity to give the keys a unique character of their own.",
+          "pitch": "The pitch envelope can be used as a secondary LFO by pointing it's Dest. B at a desired parameter, adding more movement to the sound."
+        }
+      },
+      "FM Pad - Basic": {
+        "device": "operator",
+        "category": "Keys",
+        "name": "FM Pad - Basic",
+        "description": "FM Pad with long attack and decay",
+        "file": "keys2.recipe",
+        "recipe": {
+          "osc_a": "Sine wave with very long attack (>500ms), long decay time (>500ms) and slight duck in sustain to create a long soft drone",
+          "osc_b": "Copy waveform settings from Osc A and tweak. Slight variations in multiple waveforms over time creates a complex, evolving sound to the patch. Experiment with using different waveform.",
+          "osc_c": "Copy waveform settings from Osc A and B and tweak. Slight variations in multiple waveforms over time creates a complex, evolving sound to the patch. Experiment with using different waveform.",
+          "osc_d": "Off",
+          "lfo": "Give the envelope a long attack and send the LFO to specifc oscillators to give the tone a pitch-shifting 'singing' quality. Experiment!",
+          "filter": "User choice - can define any filter and shaper with drive to further define character and quality of the tone.",
+          "main": "Algo 1. Experiment with  aftertouch and velocity to give the keys a unique character of their own.",
+          "pitch": "The pitch envelope can be used as a secondary LFO by pointing it's Dest. B at a desired parameter, adding more movement to the sound."
         }
       }
     },
     "Lead": {
-      "lead-thing": {
+      "Glide Monosynth": {
         "device": "operator",
         "category": "Lead",
-        "name": "lead-thing",
-        "description": "A figment of your imagination",
+        "name": "Glide Monosynth",
+        "description": "Monosynth with a bit of glide",
+        "file": "lead1.recipe",
         "recipe": {
-          "osc_a": "A should be set to something",
-          "osc_b": "B should be set to something",
-          "osc_c": "Something different with C",
-          "osc_d": "leave this alone",
-          "lfo": "Its a jump to the left",
-          "main": "And a step to right",
-          "pitch": "And pull your knees in tight",
-          "filter": "Off"
+          "osc_a": "Sine wave with some attack, ~5ms. Find the sweet spot as you go.",
+          "osc_b": "Optional, Define B as part of your patch's core tone as you go.",
+          "osc_c": "Optional, Define C as part of your patch's core tone as you go.",
+          "osc_d": "Optional, Define D as part of your patch's core tone as you go.",
+          "lfo": "Give the envelope a long attack and send the LFO to specifc oscillators to give the tone a pitch-shifting 'singing' quality",
+          "filter": "Off",
+          "main": "Set voices to 1. Algorithm is user choice, but monosynths should have one carrier.",
+          "pitch": "Activate Glide, set time to ~50ms. Tweak to  your liking"
+        }
+      },
+      "Glide Monosynth 2": {
+        "device": "operator",
+        "category": "Lead",
+        "name": "Glide Monosynth 2",
+        "description": "Monosynth with a bit of glide",
+        "file": "lead2.recipe",
+        "recipe": {
+          "osc_a": "Sine wave with some attack. Find the sweet spot as you go.",
+          "osc_b": "Sine wave with some attack. Find the sweet spot as you go.",
+          "osc_c": "White Noise with some attack.",
+          "osc_d": "Off",
+          "lfo": "Give the envelope a long attack and send the LFO to specifc oscillators to give the tone a pitch-shifting 'singing' quality",
+          "filter": "Pull back on the filter frequency to mellow the white noise",
+          "main": "Set voices to 1. Algorithm 8.",
+          "pitch": "Activate Glide, set time to ~50ms. Tweak to  your liking"
         }
       }
     }
