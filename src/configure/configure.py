@@ -47,7 +47,7 @@ in_file.close()
 # replace
 
 #
-# This has to be a way to do this as a single pass,
+# There has to be a way to do this as a single pass,
 # but this at least proves the concept
 #
 for k,v in repl_map.items() :
@@ -67,7 +67,7 @@ if not out_file :
     exit(30)
 
 #######
-# The header is 32 bytes. The last 4 bytes are a length filed for the rest of the data
+# The header is 32 bytes. The last 4 bytes are a length field for the rest of the data
 # in little-endian order
 #
 
