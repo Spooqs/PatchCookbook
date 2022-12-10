@@ -15,7 +15,7 @@ operator.
 
 ![app ui](https://github.com/Spooqs/PatchCookbook/blob/main/docs/ocb_mockup2.png)
 
-Each of those slots will be filled will guidelines on how to configure that
+Each of those slots will be filled with guidelines on how to configure that
 section of the operator device.
 
 ## Future
@@ -28,4 +28,12 @@ See [recipe/README](recipes/README.md) for details about how to contrib
 
 ## Installing
 
-### TBD
+Get the [latest release zip file](https://github.com/Spooqs/PatchCookbook/releases/latest).
+
+Inside the zip is a directory. That directory needs to be extract into you User Library in Ableton Live. The path to the User Library can be found by going to the browser in Ableton, left clicking on the User Library and choosing "Show in Explorer".
+
+It will take a moment for Live to update the list in the browser.
+
+## Using
+
+PatchCookbook is a midi affect and so must go on a midi track *before* the instrument (e.g. operator).
