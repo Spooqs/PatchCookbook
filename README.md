@@ -6,8 +6,8 @@ M4L Device for displaying device patch notes and instructions
 ## Overview
 
 Ever been sitting in Ableton Live trying figure out how to make a simple Reese
-Bass ? Tired of switching between windows (and may headsets) as you try to watch a
-YouTube video and teak an operator device at the same time ?
+Bass ? Tired of switching between windows (and maybe headsets) as you try to watch a
+YouTube video and tweak an operator device at the same time ?
 
 PatchCookbook is a Max4Live (c) device that you put in the same track as the
 operator and gives you guidance on how to create all sorts of sounds using
