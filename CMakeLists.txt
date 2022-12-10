@@ -2,7 +2,7 @@
 
 cmake_minimum_required(VERSION 3.18)
 
-project(PatchCookbook VERSION 0.1.0 LANGUAGES NONE)
+project(PatchCookbook VERSION 0.1.1 LANGUAGES NONE)
 
 set(VERSION_STRING "PatchCookbook_v${PatchCookbook_VERSION}")
 
@@ -34,23 +34,23 @@ add_subdirectory(src/m4l)
 #----------------------------#
 # Generate the device file
 
-# add_custom_command(
-#     OUTPUT PatchCookbook.amxd
-#     COMMAND ${PYTHON} ${CMAKE_CURRENT_SOURCE_DIR}/src/configure/configure.py
-# 		--out ${CMAKE_CURRENT_BINARY_DIR}/PatchCookbook.amxd 
-# 		--in ${CMAKE_CURRENT_SOURCE_DIR}/src/m4l/PatchCookbook.amxd.in
-# 		"VERSION_STRING=${VERSION_STRING}"
-#     DEPENDS ${CMAKE_CURRENT_SOURCE_DIR}/src/configure/configure.py
-#     VERBATIM
-#     )
+ add_custom_command(
+     OUTPUT PatchCookbook.amxd
+     COMMAND ${PYTHON} ${CMAKE_CURRENT_SOURCE_DIR}/src/configure/configure.py
+ 		--out ${CMAKE_CURRENT_BINARY_DIR}/PatchCookbook.amxd 
+ 		--in ${CMAKE_CURRENT_SOURCE_DIR}/src/m4l/PatchCookbook.amxd.in
+ 		"VERSION_STRING=${VERSION_STRING}"
+     DEPENDS ${CMAKE_CURRENT_SOURCE_DIR}/src/configure/configure.py
+     VERBATIM
+     )
 
-add_custom_command(
-    OUTPUT PatchCookbook.amxd
-    COMMAND ${CMAKE_COMMAND} -E copy ${CMAKE_CURRENT_SOURCE_DIR}/src/m4l/PatchCookbook.amxd.in 
-                ${CMAKE_CURRENT_BINARY_DIR}/PatchCookbook.amxd
-    DEPENDS ${CMAKE_CURRENT_SOURCE_DIR}/src/configure/configure.py
-    VERBATIM
-    )
+#add_custom_command(
+#    OUTPUT PatchCookbook.amxd
+#    COMMAND ${CMAKE_COMMAND} -E copy ${CMAKE_CURRENT_SOURCE_DIR}/src/m4l/PatchCookbook.amxd.in 
+#                ${CMAKE_CURRENT_BINARY_DIR}/PatchCookbook.amxd
+#    DEPENDS ${CMAKE_CURRENT_SOURCE_DIR}/src/configure/configure.py
+#    VERBATIM
+#    )
 
 add_custom_target(device_file ALL 
     DEPENDS 
