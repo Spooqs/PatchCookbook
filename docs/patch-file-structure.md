@@ -12,7 +12,11 @@
                 "device" : "%%device",
                 "category" : "%%category",
                 "recipe" : {
-                    "%%slot" : "string",
+                    "%%generic_slot" : {
+                        "slot_name" : "%%orig_slot_name",
+                        "slot_label" : "%%slot_label",
+                        "text" :: "%instructions"
+                    },
                     ...
                 }
             },
@@ -61,8 +65,7 @@ above. All other values are taken as-is from recipe file.
 
 ### recipe and %%slot
 
-The slot keys available will depend on the device. For operator, the slots are
-:
+The slots available will depend on the device. For operator, the slots are:
 - osc_a
 - osc_b
 - osc_c
@@ -71,6 +74,8 @@ The slot keys available will depend on the device. For operator, the slots are
 - pitch
 - lfo
 - main
+
+The %%generic_slot is of the form "slot1", "slot2", etc.
 
 All slot keys are guaranteed to be present in the recipe object. Any that were
 not specified by the recipe file will be set to thw string "Off".

@@ -19,7 +19,7 @@ device : operator
 category : Lead
 
 # The name for the patch. This will be presented to the user as a
-# part of the menu. Duplicate names in side a category is not allowed.
+# part of the menu. Duplicate names inside a category is not allowed.
 name : Groovy Lead
 
 # A short description of the sound

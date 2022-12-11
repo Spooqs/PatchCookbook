@@ -1,9 +1,9 @@
 [patch]
 
-# This will be normaizled to 'operator'
+# This will be normalized to lower case
 device : Operator
 
-# This will be normalized to 'Lead'
+# This will be normalized to capitalized
 category : Keys
 
 name : FM Keys - Basic
