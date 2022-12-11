@@ -4,6 +4,8 @@ import { SlotData } from './patch-display/patch-display.component'
 
 import * as Patches from '../assets/patches.json'
 
+const PATCH_TOP_KEY = "patches";
+
 
 @Component({
     selector: 'app-root',
@@ -19,7 +21,7 @@ export class AppComponent implements OnInit {
 
     device_name = "--select--";
     is_device_selected  = false;
-    devices : string[] = Object.keys(Patches).filter(key => key != "default");
+    devices : string[] = Object.keys(Patches[PATCH_TOP_KEY]).filter(key => key != "default");
 
     is_category_selected  = false;
     categories : string[] = [];
@@ -40,7 +42,7 @@ export class AppComponent implements OnInit {
     }
 
 
-    onDeviceChange(event : Event) {
+    onDeviceChange(event : Event): void {
         console.log(event);
         if (this.deviceControl.value) {
             let newValue = (event as unknown) as string;
@@ -50,7 +52,7 @@ export class AppComponent implements OnInit {
             this.is_patch_selected = false;
             this.categoryControl.setValue(null);
             // eslint-disable-next-line @typescript-eslint/no-explicit-any
-            this.cat_objs = (Patches as any)[newValue];
+            this.cat_objs = (Patches[PATCH_TOP_KEY] as any)[newValue];
             this.categories = Object.keys(this.cat_objs);
         }
     }

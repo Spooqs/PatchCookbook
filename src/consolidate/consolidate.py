@@ -5,24 +5,27 @@ from   configparser import ConfigParser
 import json
 import os
 
+from collections import namedtuple
+
+SlotConfig = namedtuple('SlotConfig', ['id', 'label'])
+
 class Consolidator:
     Metadata_keys = [ 'name', 'device', 'description', 'category' ]
 
     Recipe_keys = {
-            # order of this determines the order of the slots -
-            # e.g. index 0 = 'slot1', index 1 = slot2, etc
+
             # this info probably belongs in an external config file
             'operator' : {
                 # The key is what shows up in the .recipe file. The values
                 # will show up in the patch file
-                'osc_d'  : { 'slot' : 'slot1', 'slot_label' : 'D'   },
-                'osc_c'  : { 'slot' : 'slot2', 'slot_label' : 'C'   },
-                'osc_b'  : { 'slot' : 'slot3', 'slot_label' : 'B'   },
-                'osc_a'  : { 'slot' : 'slot4', 'slot_label' : 'A'   },
-                'lfo'    : { 'slot' : 'slot5', 'slot_label' : 'LFO' },
-                'pitch'  : { 'slot' : 'slot6', 'slot_label' : 'Pitch Env'  },
-                'filter' : { 'slot' : 'slot7', 'slot_label' : 'Filter' },
-                'main'   : { 'slot' : 'slot8', 'slot_label' : 'Main'   },
+                'osc_d'  : SlotConfig('slot1', 'D'   ),
+                'osc_c'  : SlotConfig('slot2', 'C'   ),
+                'osc_b'  : SlotConfig('slot3', 'B'   ),
+                'osc_a'  : SlotConfig('slot4', 'A'   ),
+                'lfo'    : SlotConfig('slot5', 'LFO' ),
+                'pitch'  : SlotConfig('slot6', 'Pitch Env'  ),
+                'filter' : SlotConfig('slot7', 'Filter' ),
+                'main'   : SlotConfig('slot8', 'Main'   ),
 
             },
         }
@@ -92,10 +95,11 @@ class Consolidator:
         recipe = {}
         for user_slot_name in cfg_data :
             if user_slot_name in slot_config_data :
+                this_config_data = slot_config_data[user_slot_name]
                 text = "Off"
                 if user_slot_name in cfg_data and cfg_data[user_slot_name] != "" :
                     text = cfg_data[user_slot_name]
-                recipe[user_slot_name] = { 'slot_name' : user_slot_name, 'text' : text, 'slot_label' : slot_config_data[user_slot_name]['slot_label'] }
+                recipe[user_slot_name] = { 'slot_name' : user_slot_name, 'text' : text, 'slot_label' : this_config_data.label }
             else :
                 print(f"ERROR: invalid slot name for device {json_data['device']} : {user_slot_name}")
                 exit(10)
@@ -103,14 +107,14 @@ class Consolidator:
         output = {};
         for user_slot_name in slot_config_data :
             this_config_data = slot_config_data[user_slot_name]
-            generic_slot_name = this_config_data['slot']
+            generic_slot_name = this_config_data.id
             
             # The loop above takes care of missing values for the slot. WE just
             # need to take care of missing slots.
             if user_slot_name not in recipe :
                 output[generic_slot_name] = { 'slot_name' : generic_slot_name, 
                         'text' : 'off', 
-                        'slot_label' : this_config_data['slot_label'] }
+                        'slot_label' : this_config_data.label }
             else :
                 output[generic_slot_name] = recipe[user_slot_name]
 
@@ -157,8 +161,10 @@ class Consolidator:
                 cv = dv[c]
                 pnames = sorted(cv.keys())
                 dv[c] = {}
-                dv[c] = { p : cv[p] for p in pnames } 
-        output_file.write(json.dumps(self.consolidated, indent=2).encode('UTF-8'))
+                dv[c] = { p : cv[p] for p in pnames }
+        
+        output_json = { 'metadata' : { 'version' : "@VERSION_STRING@" }, 'patches' : self.consolidated }
+        output_file.write(json.dumps(output_json, indent=2).encode('UTF-8'))
 
 
 # ===== MAIN ======================
