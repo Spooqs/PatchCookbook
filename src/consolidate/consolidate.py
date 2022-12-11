@@ -9,12 +9,27 @@ class Consolidator:
     Metadata_keys = [ 'name', 'device', 'description', 'category' ]
 
     Recipe_keys = {
-            'operator' : [ 'osc_d', 'osc_c', 'osc_b', 'osc_a', 'lfo', 'pitch', 'main', 'filter' ]
-            }
+            # order of this determines the order of the slots -
+            # e.g. index 0 = 'slot1', index 1 = slot2, etc
+            # this info probably belongs in an external config file
+            'operator' : {
+                # The key is what shows up in the .recipe file. The values
+                # will show up in the patch file
+                'osc_d'  : { 'slot' : 'slot1', 'slot_label' : 'D'   },
+                'osc_c'  : { 'slot' : 'slot2', 'slot_label' : 'C'   },
+                'osc_b'  : { 'slot' : 'slot3', 'slot_label' : 'B'   },
+                'osc_a'  : { 'slot' : 'slot4', 'slot_label' : 'A'   },
+                'lfo'    : { 'slot' : 'slot5', 'slot_label' : 'LFO' },
+                'pitch'  : { 'slot' : 'slot6', 'slot_label' : 'Pitch Env'  },
+                'filter' : { 'slot' : 'slot7', 'slot_label' : 'Filter' },
+                'main'   : { 'slot' : 'slot8', 'slot_label' : 'Main'   },
 
-    def __init__(self, output_file) :
-        self.output = output_file
+            },
+        }
+
+    def __init__(self) :
         self.consolidated = {}
+        # reform the Recipe data for ease of access.
 
 
     def _add_meta_data(self, input_file_name : str, cfg_data, json_data) :
@@ -72,25 +87,34 @@ class Consolidator:
 
     def _add_recipe(self, cfg_data, json_data) :
 
-        slot_names = self.Recipe_keys[json_data['device']]
+        slot_config_data = self.Recipe_keys[json_data['device']]
 
         recipe = {}
-        for s in cfg_data :
-            if s in slot_names :
-                recipe[s] = { 'slot_name' : s, 'text' : cfg_data[s] }
+        for user_slot_name in cfg_data :
+            if user_slot_name in slot_config_data :
+                text = "Off"
+                if user_slot_name in cfg_data and cfg_data[user_slot_name] != "" :
+                    text = cfg_data[user_slot_name]
+                recipe[user_slot_name] = { 'slot_name' : user_slot_name, 'text' : text, 'slot_label' : slot_config_data[user_slot_name]['slot_label'] }
             else :
-                print(f"ERROR: invalid slot name for device {json_data['device']} : {s}")
+                print(f"ERROR: invalid slot name for device {json_data['device']} : {user_slot_name}")
                 exit(10)
 
         output = {};
-        for i,s in enumerate(slot_names) :
-            slot_id = f"slot{i+1}"
-            if s not in recipe or not recipe[s] :
-                output[slot_id] = { 'slot_name' : s, 'text' : 'off' }
+        for user_slot_name in slot_config_data :
+            this_config_data = slot_config_data[user_slot_name]
+            generic_slot_name = this_config_data['slot']
+            
+            # The loop above takes care of missing values for the slot. WE just
+            # need to take care of missing slots.
+            if user_slot_name not in recipe :
+                output[generic_slot_name] = { 'slot_name' : generic_slot_name, 
+                        'text' : 'off', 
+                        'slot_label' : this_config_data['slot_label'] }
             else :
-                output[slot_id] = recipe[s];
+                output[generic_slot_name] = recipe[user_slot_name]
 
-        json_data['recipe'] = output;
+        json_data['recipe'] = output
 
     def _transform_data(self, input_file_name : str, data : ConfigParser ) :
         """
@@ -123,7 +147,7 @@ class Consolidator:
             exit(10)
         self._transform_data(input_file_name, cfg)
 
-    def write_data(self) :
+    def write_data(self, output_file) :
         # need to rewrite the data a bit
         # sort the keys for the patches. dictionaries are ordered
         # by default. the json module perserves that order on export
@@ -134,7 +158,7 @@ class Consolidator:
                 pnames = sorted(cv.keys())
                 dv[c] = {}
                 dv[c] = { p : cv[p] for p in pnames } 
-        self.output.write(json.dumps(self.consolidated, indent=2))
+        output_file.write(json.dumps(self.consolidated, indent=2).encode('UTF-8'))
 
 
 # ===== MAIN ======================
@@ -149,19 +173,7 @@ if __name__ == "__main__" :
         print("ERROR: --output not given on command line")
         exit(20)
 
-    out_file = None
-
-    try :
-        out_file = open(args.output, "w");
-    except Exception as e :
-        print(f"ERROR: Could not open {args.output} for writing : {e=}")
-        exit(30)
-
-    if not out_file :
-        print(f"ERROR: Could not open {args.output} for writing")
-        exit(30)
-
-    c = Consolidator(out_file)
+    c = Consolidator()
 
     for i in args.input :
         if not os.path.exists(i) :
@@ -180,8 +192,21 @@ if __name__ == "__main__" :
                         c.consolidate(os.path.join(toppath, f))
 
         else :
-            print(f'ERROR: unknown path type (not file or dir {i}')
+            print(f'ERROR: unknown path type (`{i}` is not file or directory')
             exit(40)
 
-    c.write_data()
+    out_file = None
+
+    try :
+        # be sure to open in binary mode for windows
+        out_file = open(args.output, "wb");
+    except Exception as e :
+        print(f"ERROR: Could not open {args.output} for writing : {e=}")
+        exit(30)
+
+    if not out_file :
+        print(f"ERROR: Could not open {args.output} for writing")
+        exit(30)
+
+    c.write_data(out_file)
 

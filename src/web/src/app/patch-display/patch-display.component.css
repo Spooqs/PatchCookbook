@@ -33,22 +33,18 @@
 
 .chamfered-top { border-radius: 10px 10px 0 0; }
 
-.osc_d { background : #FFA600;  padding: 5px; padding-bottom : 1px; }
-label.osc_d::before { content : "D"; color: black; font-weight : bold; font-size : 20pt; }
+/* Standard formatting for the slot label */
+.slot-label  { font-weight : bold; font-size : 16pt; color: #F7F7F7; }
 
-.osc_c { background : #5177E3;  padding: 5px; padding-bottom : 1px; }
-label.osc_c::before { content : "C"; color: black; font-weight : bold;  font-size : 20pt; }
+/* specific formatting for particular labels */
+.osc_d { background : #FFA600;  padding: 5px; padding-bottom : 3px; }
+label.osc_d { color: black; font-size : 20pt; }
 
-.osc_b { background : #21D2D8;  padding: 5px; padding-bottom : 1px; }
-label.osc_b::before { content : "B"; color: black; font-weight : bold;  font-size : 20pt; }
+.osc_c { background : #5177E3;  padding: 5px; padding-bottom : 3px; }
+label.osc_c { color: black; font-size : 20pt; }
 
-.osc_a { background : #FAFF00;  padding: 5px; padding-bottom : 1px; }
-label.osc_a::before { content : "A"; color: black; font-weight : bold;  font-size : 20pt; }
+.osc_b { background : #21D2D8;  padding: 5px; padding-bottom : 3px; }
+label.osc_b {  color: black; font-size : 20pt; }
 
-label.lfo::before { content : "LFO"; font-weight : bold;  width : 100%; font-size : 16pt; color: #F7F7F7; }
-
-label.main::before { content : "Main"; font-weight : bold; width : 100%; font-size : 16pt; color: #F7F7F7; }
-
-label.filter::before { content : "Filter"; font-weight : bold; width : 100%; font-size : 16pt; color: #F7F7F7; }
-
-label.pitch::before { content : "Pitch Env"; font-weight : bold;  width : 100%; font-size : 16pt; color: #F7F7F7; }
+.osc_a { background : #FAFF00;  padding: 5px; padding-bottom : 3px; }
+label.osc_a { color: black; font-size : 20pt; }
