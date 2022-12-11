@@ -2,7 +2,7 @@
 
 cmake_minimum_required(VERSION 3.18)
 
-project(PatchCookbook VERSION 0.1.1 LANGUAGES NONE)
+project(PatchCookbook VERSION 0.2.0 LANGUAGES NONE)
 
 set(VERSION_STRING "PatchCookbook_v${PatchCookbook_VERSION}")
 
@@ -41,6 +41,7 @@ add_subdirectory(src/m4l)
  		--in ${CMAKE_CURRENT_SOURCE_DIR}/src/m4l/PatchCookbook.amxd.in
  		"VERSION_STRING=${VERSION_STRING}"
      DEPENDS ${CMAKE_CURRENT_SOURCE_DIR}/src/configure/configure.py
+            ${CMAKE_CURRENT_SOURCE_DIR}/src/m4l/PatchCookbook.amxd.in
      VERBATIM
      )
 
@@ -54,8 +55,7 @@ add_subdirectory(src/m4l)
 
 add_custom_target(device_file ALL 
     DEPENDS 
-        ${CMAKE_CURRENT_BINARY_DIR}/PatchCookbook.amxd 
-        ${patches_SRC} 
+        ${CMAKE_CURRENT_SOURCE_DIR}/src/m4l/PatchCookbook.amxd.in 
         ${CMAKE_CURRENT_SOURCE_DIR}/src/configure/configure.py
     )
 

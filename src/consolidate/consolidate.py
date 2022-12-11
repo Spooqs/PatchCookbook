@@ -9,7 +9,7 @@ class Consolidator:
     Metadata_keys = [ 'name', 'device', 'description', 'category' ]
 
     Recipe_keys = {
-            'operator' : [ 'osc_a', 'osc_b', 'osc_c', 'osc_d', 'lfo', 'pitch', 'main', 'filter' ]
+            'operator' : [ 'osc_d', 'osc_c', 'osc_b', 'osc_a', 'lfo', 'pitch', 'main', 'filter' ]
             }
 
     def __init__(self, output_file) :
@@ -77,16 +77,20 @@ class Consolidator:
         recipe = {}
         for s in cfg_data :
             if s in slot_names :
-                recipe[s] = cfg_data[s]
+                recipe[s] = { 'slot_name' : s, 'text' : cfg_data[s] }
             else :
                 print(f"ERROR: invalid slot name for device {json_data['device']} : {s}")
                 exit(10)
 
-        for s in slot_names :
+        output = {};
+        for i,s in enumerate(slot_names) :
+            slot_id = f"slot{i+1}"
             if s not in recipe or not recipe[s] :
-                recipe[s] = 'Off'
+                output[slot_id] = { 'slot_name' : s, 'text' : 'off' }
+            else :
+                output[slot_id] = recipe[s];
 
-        json_data['recipe'] = recipe
+        json_data['recipe'] = output;
 
     def _transform_data(self, input_file_name : str, data : ConfigParser ) :
         """
