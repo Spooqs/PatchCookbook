@@ -152,18 +152,23 @@ class Consolidator:
         self._transform_data(input_file_name, cfg)
 
     def write_data(self, output_file) :
-        # need to rewrite the data a bit
         # sort the keys for the patches. dictionaries are ordered
         # by default. the json module perserves that order on export
         # hopefully m4l perserves it on load.
-        for d, dv in self.consolidated.items():
-            for c in dv :
-                cv = dv[c]
-                pnames = sorted(cv.keys())
-                dv[c] = {}
-                dv[c] = { p : cv[p] for p in pnames }
+        for dev, dev_value in self.consolidated.items():
+            for cat in dev_value :
+                cat_value = dev_value[cat]
+                patch_names = sorted(cat_value.keys())
+                dev_value[cat] = { p : cat_value[p] for p in patch_names }
         
-        output_json = { 'metadata' : { 'version' : "@VERSION_STRING@" }, 'patches' : self.consolidated }
+        output_json = {
+            'metadata' : { 
+                'schema-version' : '1',
+                'data-version' : "@VERSION_STRING@",
+            }, 
+
+            'patches' : self.consolidated 
+        }
         output_file.write(json.dumps(output_json, indent=2).encode('UTF-8'))
 
 
