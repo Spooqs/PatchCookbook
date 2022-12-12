@@ -8,6 +8,8 @@ import os
 parser = argparse.ArgumentParser()
 parser.add_argument("--output", type=str, required=True, help="path and file for the output")
 parser.add_argument("--input", type=str, required=True, help="path and file for the input")
+parser.add_argument('--simple', default=False, action='store_true')
+parser.add_argument('--no-simple', dest='simple', action='store_false')
 parser.add_argument("replacement", metavar="key=value", type=str, nargs="+", help="Replacement strings")
 
 args = parser.parse_args()
@@ -36,9 +38,11 @@ if not in_file :
     exit(30)
 
 
-file_header = in_file.read(32)
-file_data = in_file.read()
+file_header = ''
+if not args.simple :
+    file_header = in_file.read(32)
 
+file_data = in_file.read()
 
 in_file.close()
 
@@ -71,8 +75,9 @@ if not out_file :
 # in little-endian order
 #
 
-file_header = file_header[0:28] + int(len(file_data)).to_bytes(4, byteorder="little")
+if not args.simple :
+    file_header = file_header[0:28] + int(len(file_data)).to_bytes(4, byteorder="little")
+    out_file.write(file_header)
 
-out_file.write(file_header)
 out_file.write(file_data)
 

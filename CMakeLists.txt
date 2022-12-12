@@ -34,9 +34,11 @@ add_subdirectory(src/m4l)
 #----------------------------#
 # Generate the device file
 
+set(configure_SCRIPT ${CMAKE_CURRENT_SOURCE_DIR}/src/configure/configure.py)
+
  add_custom_command(
      OUTPUT PatchCookbook.amxd
-     COMMAND ${PYTHON} ${CMAKE_CURRENT_SOURCE_DIR}/src/configure/configure.py
+     COMMAND ${PYTHON} ${configure_SCRIPT}
  		--out ${CMAKE_CURRENT_BINARY_DIR}/PatchCookbook.amxd 
  		--in ${CMAKE_CURRENT_SOURCE_DIR}/src/m4l/PatchCookbook.amxd.in
  		"VERSION_STRING=${VERSION_STRING}"
@@ -45,14 +47,6 @@ add_subdirectory(src/m4l)
      VERBATIM
      )
 
-#add_custom_command(
-#    OUTPUT PatchCookbook.amxd
-#    COMMAND ${CMAKE_COMMAND} -E copy ${CMAKE_CURRENT_SOURCE_DIR}/src/m4l/PatchCookbook.amxd.in 
-#                ${CMAKE_CURRENT_BINARY_DIR}/PatchCookbook.amxd
-#    DEPENDS ${CMAKE_CURRENT_SOURCE_DIR}/src/configure/configure.py
-#    VERBATIM
-#    )
-
 add_custom_target(device_file ALL 
     DEPENDS 
         ${CMAKE_CURRENT_SOURCE_DIR}/src/m4l/PatchCookbook.amxd.in 
@@ -60,25 +54,48 @@ add_custom_target(device_file ALL
     )
 
 #----------------------------#
-# Generate the patch file
+# Generate the patch .in file
 
 set(patchfileNAME "patches.json")
+set(patchfileINNAME "patches.json.in")
 set(patchfilePATH "${CMAKE_CURRENT_BINARY_DIR}/${patchfileNAME}")
-set(consolidateSCRIPT "${CMAKE_CURRENT_SOURCE_DIR}/src/consolidate/consolidate.py")
+set(patchfileINPATH "${CMAKE_CURRENT_BINARY_DIR}/${patchfileINNAME}")
+set(consolidate_SCRIPT "${CMAKE_CURRENT_SOURCE_DIR}/src/consolidate/consolidate.py")
+
+add_custom_command(
+    OUTPUT ${patchfileINNAME}
+    COMMAND ${PYTHON} ${consolidate_SCRIPT} 
+        --out ${patchfileINPATH}
+        ${CMAKE_CURRENT_SOURCE_DIR}/recipes
+    DEPENDS ${consolidate_SCRIPT}
+    VERBATIM
+    )
+
+add_custom_target(patch_file_in ALL 
+    DEPENDS 
+        ${patchfileINPATH} 
+		${patches_SRC}
+		${consolidate_SCRIPT}
+    )
+
+#----------------------------#
+# Generate the patch file
 
 add_custom_command(
     OUTPUT ${patchfileNAME}
-    COMMAND ${PYTHON} ${consolidateSCRIPT} 
-        --out ${patchfilePATH} ${CMAKE_CURRENT_SOURCE_DIR}/recipes
-    DEPENDS ${consolidateSCRIPT}
+    COMMAND ${PYTHON} ${configure_SCRIPT}
+        --simple
+        --in  ${patchfileINPATH}
+        --out ${patchfilePATH}
+        "VERSION_STRING=${VERSION_STRING}"
+    DEPENDS ${configure_SCRIPT} ${patchfileINPATH}
     VERBATIM
     )
 
 add_custom_target(patch_file ALL 
     DEPENDS 
-        ${patchfilePATH} 
-		${patches_SRC} 
-		${consolidateSCRIPT}
+        patch_file_in
+		${configure_SCRIPT}
     )
 
 #---------------------------#
@@ -98,12 +115,12 @@ add_custom_command(
 		${tempDIR}
     COMMAND ${ZIP} ${zipfileNAME} ${tempDIR}
     COMMAND ${CMAKE_COMMAND} -E rm -rf ${tempDIR}
-    DEPENDS ${m4l_SRC} ${CMAKE_CURRENT_BINARY_DIR}/PatchCookbook.amxd
+    DEPENDS ${m4l_SRC} ${CMAKE_CURRENT_BINARY_DIR}/PatchCookbook.amxd ${patchfilePATH}
     VERBATIM
     )
 	
 add_custom_target(zipfile ALL
-    DEPENDS patch_file device_file ${m4l_SRC} ${zipfileNAME}
+    DEPENDS ${patchfilePATH} device_file ${m4l_SRC} ${zipfileNAME}
     )
 
 #---------------------------#
