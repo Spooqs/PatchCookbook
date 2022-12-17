@@ -1,0 +1,608 @@
+{
+  "metadata": {
+    "schema-version": "1",
+    "data-version": "PatchCookbook_v0.2.0"
+  },
+  "patches": {
+    "operator": {
+      "Bass": {
+        "Neuro Bass": {
+          "device": "operator",
+          "category": "Bass",
+          "name": "Neuro Bass",
+          "description": "Growling, full bodied bass sound",
+          "file": "neuro_bass.recipe",
+          "recipe": {
+            "slot1": {
+              "slot_name": "osc_d",
+              "text": "Off",
+              "slot_label": "D"
+            },
+            "slot2": {
+              "slot_name": "osc_c",
+              "text": "White noise waveform to give the bass more top end content to help cut through the mix.",
+              "slot_label": "C"
+            },
+            "slot3": {
+              "slot_name": "osc_b",
+              "text": "Saw, triangle or square waveform to give the bass a bit more top end to cut through the mix better. Use user waveform to add top end content.",
+              "slot_label": "B"
+            },
+            "slot4": {
+              "slot_name": "osc_a",
+              "text": "Sine wavefom with the coarse setting at 0.5. Play this patch in the bass range (C0-C2). Use user waveform to add to mids and top end content.",
+              "slot_label": "A"
+            },
+            "slot5": {
+              "slot_name": "lfo",
+              "text": "Target the filter.",
+              "slot_label": "LFO"
+            },
+            "slot6": {
+              "slot_name": "pitch",
+              "text": "Add Glide to give the bass a pitch shifting quality between held notes",
+              "slot_label": "Pitch Env"
+            },
+            "slot7": {
+              "slot_name": "filter",
+              "text": "Use a notch filter instead of a low pass - this is integral in the Neuro bass sound. Experiment with the position of the filter along with it's shaper and applied drive.",
+              "slot_label": "Filter"
+            },
+            "slot8": {
+              "slot_name": "main",
+              "text": "Voices set to 1.",
+              "slot_label": "Main"
+            }
+          }
+        },
+        "Reese Bass": {
+          "device": "operator",
+          "category": "Bass",
+          "name": "Reese Bass",
+          "description": "Growling, full bodied bass sound",
+          "file": "reese_bass.recipe",
+          "recipe": {
+            "slot1": {
+              "slot_name": "osc_d",
+              "text": "Off",
+              "slot_label": "D"
+            },
+            "slot2": {
+              "slot_name": "osc_c",
+              "text": "White noise waveform to give the bass more top end content to help cut through the mix.",
+              "slot_label": "C"
+            },
+            "slot3": {
+              "slot_name": "osc_b",
+              "text": "Saw, triangle or square waveform to give the bass a bit more top end to cut through the mix better. Use user waveform to add top end content.",
+              "slot_label": "B"
+            },
+            "slot4": {
+              "slot_name": "osc_a",
+              "text": "Sine wavefom with the coarse setting at 0.5. Play this patch in the bass range (C0-C2). Use user waveform to add to mids and top end content.",
+              "slot_label": "A"
+            },
+            "slot5": {
+              "slot_name": "lfo",
+              "text": "Target the filter.",
+              "slot_label": "LFO"
+            },
+            "slot6": {
+              "slot_name": "pitch",
+              "text": "Add Glide to give the bass a pitch shifting quality between held notes",
+              "slot_label": "Pitch Env"
+            },
+            "slot7": {
+              "slot_name": "filter",
+              "text": "Pull back on filter frequency to tame high end. Use filter and shaper with drive to give the bass a more aggressive tone. Movement of the filter top end helps define the Reese sound.",
+              "slot_label": "Filter"
+            },
+            "slot8": {
+              "slot_name": "main",
+              "text": "Voices set to 1.",
+              "slot_label": "Main"
+            }
+          }
+        }
+      },
+      "Lead": {
+        "FM Plucks": {
+          "device": "operator",
+          "category": "Lead",
+          "name": "FM Plucks",
+          "description": "Plucky, percussive, harp-like lead tone",
+          "file": "fm_pluck.recipe",
+          "recipe": {
+            "slot1": {
+              "slot_name": "osc_d",
+              "text": "Off",
+              "slot_label": "D"
+            },
+            "slot2": {
+              "slot_name": "osc_c",
+              "text": "White Noise with some attack.",
+              "slot_label": "C"
+            },
+            "slot3": {
+              "slot_name": "osc_b",
+              "text": "Sine wave with some attack. Find the sweet spot as you go.",
+              "slot_label": "B"
+            },
+            "slot4": {
+              "slot_name": "osc_a",
+              "text": "Sine wave with short attack and decay. Sustain should be very low to -inf. Release can be 0, but also produces an interesting effect when high.",
+              "slot_label": "A"
+            },
+            "slot5": {
+              "slot_name": "lfo",
+              "text": "Give the envelope a long attack and send the LFO to specifc oscillators to give the tone a pitch-shifting 'singing' quality",
+              "slot_label": "LFO"
+            },
+            "slot6": {
+              "slot_name": "pitch",
+              "text": "Activate Glide, set time to ~50ms. Tweak to  your liking",
+              "slot_label": "Pitch Env"
+            },
+            "slot7": {
+              "slot_name": "filter",
+              "text": "Pull back on the filter frequency to mellow the white noise",
+              "slot_label": "Filter"
+            },
+            "slot8": {
+              "slot_name": "main",
+              "text": "Set voices to 1. Algorithm 8.",
+              "slot_label": "Main"
+            }
+          }
+        },
+        "Glide Monosynth": {
+          "device": "operator",
+          "category": "Lead",
+          "name": "Glide Monosynth",
+          "description": "Monosynth with a bit of glide",
+          "file": "glide_monosynth.recipe",
+          "recipe": {
+            "slot1": {
+              "slot_name": "osc_d",
+              "text": "Optional, Define D as part of your patch's core tone as you go.",
+              "slot_label": "D"
+            },
+            "slot2": {
+              "slot_name": "osc_c",
+              "text": "Optional, Define C as part of your patch's core tone as you go.",
+              "slot_label": "C"
+            },
+            "slot3": {
+              "slot_name": "osc_b",
+              "text": "Optional, Define B as part of your patch's core tone as you go.",
+              "slot_label": "B"
+            },
+            "slot4": {
+              "slot_name": "osc_a",
+              "text": "Sine wave with some attack, ~5ms. Find the sweet spot as you go.",
+              "slot_label": "A"
+            },
+            "slot5": {
+              "slot_name": "lfo",
+              "text": "Give the envelope a long attack and send the LFO to specifc oscillators to give the tone a pitch-shifting 'singing' quality",
+              "slot_label": "LFO"
+            },
+            "slot6": {
+              "slot_name": "pitch",
+              "text": "Activate Glide, set time to ~50ms. Tweak to  your liking",
+              "slot_label": "Pitch Env"
+            },
+            "slot7": {
+              "slot_name": "filter",
+              "text": "Off",
+              "slot_label": "Filter"
+            },
+            "slot8": {
+              "slot_name": "main",
+              "text": "Set voices to 1. Algorithm is user choice, but monosynths should have one carrier.",
+              "slot_label": "Main"
+            }
+          }
+        }
+      },
+      "Drum": {
+        "FM 808": {
+          "device": "operator",
+          "category": "Drum",
+          "name": "FM 808",
+          "description": "An FM Kick with a sustained bass note",
+          "file": "fm_808.recipe",
+          "recipe": {
+            "slot1": {
+              "slot_name": "osc_d",
+              "text": "White noise waveform with a little attack to simulate the noise of the drum head. The top end content will also help the kick cut through the mix.",
+              "slot_label": "D"
+            },
+            "slot2": {
+              "slot_name": "osc_c",
+              "text": "Fast attack and decay to simulate the sound of a beater striking a drum head",
+              "slot_label": "C"
+            },
+            "slot3": {
+              "slot_name": "osc_b",
+              "text": "This osc is the fundamental tone of the kick. Consider setting the coarse to 0.5 for a deeper sound. Use a simple sine wave to start. If pitch is not fixed, follow the track's root or bassline.",
+              "slot_label": "B"
+            },
+            "slot4": {
+              "slot_name": "osc_a",
+              "text": "This osc is the fundamental tone of the bass part of the instrument. Consider setting the coarse to 0.5 for a deeper sound. Experiment with low attack and high sustain and release. Carefully add harmonics to give the bass part more power",
+              "slot_label": "A"
+            },
+            "slot5": {
+              "slot_name": "lfo",
+              "text": "Off.",
+              "slot_label": "LFO"
+            },
+            "slot6": {
+              "slot_name": "pitch",
+              "text": "Turn the Pitch Env up with the envelope set to a high peak with a fast decay. Be sure the sustain is 0 so the bass is tuned correctly. This pitch envelope simulates the warping of a drum head when it is struck by a beater.",
+              "slot_label": "Pitch Env"
+            },
+            "slot7": {
+              "slot_name": "filter",
+              "text": "Experiment with the position of the filter along with it's shaper and applied drive to give character to the kick.",
+              "slot_label": "Filter"
+            },
+            "slot8": {
+              "slot_name": "main",
+              "text": "Voices set to 1. Algorithm 1 works well, but others can produce unique kick sounds with the same fundamental approach.",
+              "slot_label": "Main"
+            }
+          }
+        },
+        "FM Hi Hat": {
+          "device": "operator",
+          "category": "Drum",
+          "name": "FM Hi Hat",
+          "description": "FM Hi Hat (closed or open)",
+          "file": "fm_hi_hat.recipe",
+          "recipe": {
+            "slot1": {
+              "slot_name": "osc_d",
+              "text": "Off",
+              "slot_label": "D"
+            },
+            "slot2": {
+              "slot_name": "osc_c",
+              "text": "White noise waveform with a little attack to simulate the noise of the drum head. The top end content will also help the kick cut through the mix.",
+              "slot_label": "C"
+            },
+            "slot3": {
+              "slot_name": "osc_b",
+              "text": "An additional quickly-decaying envelope with a higher coarse level to give body to the hat's core tone. Consider a waveform with more harmonics than sine to add brightness to the sound.",
+              "slot_label": "B"
+            },
+            "slot4": {
+              "slot_name": "osc_a",
+              "text": "Snappy envelope that decays quickly. Use higher coarse value to tune the hat higher and give a brighter tone. The envelope decay of both Osc A and B determines the 'openess' of the hat sound.",
+              "slot_label": "A"
+            },
+            "slot5": {
+              "slot_name": "lfo",
+              "text": "Off.",
+              "slot_label": "LFO"
+            },
+            "slot6": {
+              "slot_name": "pitch",
+              "text": "Turn the Pitch Env up with the envelope set to a high peak with a fast decay. Be sure the sustain is 0 so the bass is tuned correctly. This pitch envelope simulates the warping of a drum head when it is struck by a beater.",
+              "slot_label": "Pitch Env"
+            },
+            "slot7": {
+              "slot_name": "filter",
+              "text": "Experiment with the position of the filter along with it's shaper and applied drive to give character to the kick.",
+              "slot_label": "Filter"
+            },
+            "slot8": {
+              "slot_name": "main",
+              "text": "Voices set to 1. Algorithm 1 works well, but others can produce unique kick sounds with the same fundamental approach.",
+              "slot_label": "Main"
+            }
+          }
+        },
+        "FM Kick Drum": {
+          "device": "operator",
+          "category": "Drum",
+          "name": "FM Kick Drum",
+          "description": "Simple Kick sound from FM synthesis.",
+          "file": "fm_kick_drum.recipe",
+          "recipe": {
+            "slot1": {
+              "slot_name": "osc_d",
+              "text": "Off",
+              "slot_label": "D"
+            },
+            "slot2": {
+              "slot_name": "osc_c",
+              "text": "White noise waveform with a little attack to simulate the noise of the drum head. The top end content will also help the kick cut through the mix.",
+              "slot_label": "C"
+            },
+            "slot3": {
+              "slot_name": "osc_b",
+              "text": "Fast attack and decay to simulate the sound of a beater striking a drum head",
+              "slot_label": "B"
+            },
+            "slot4": {
+              "slot_name": "osc_a",
+              "text": "This osc is the fundamental tone of the kick. Consider setting the coarse to 0.5 for a deeper sound. Use a simple sine wave to start. If pitch is not fixed, follow the track's root or bassline.",
+              "slot_label": "A"
+            },
+            "slot5": {
+              "slot_name": "lfo",
+              "text": "Off",
+              "slot_label": "LFO"
+            },
+            "slot6": {
+              "slot_name": "pitch",
+              "text": "Turn the Pitch Env up with the envelope set to a high peak with a fast decay. This pitch envelope simulates the warping of a drum head when it is struck by a beater.",
+              "slot_label": "Pitch Env"
+            },
+            "slot7": {
+              "slot_name": "filter",
+              "text": "Experiment with the position of the filter along with it's shaper and applied drive to give character to the kick.",
+              "slot_label": "Filter"
+            },
+            "slot8": {
+              "slot_name": "main",
+              "text": "Voices set to 1. Algorithm 1 works well, but others can produce unique kick sounds with the same fundamental approach.",
+              "slot_label": "Main"
+            }
+          }
+        },
+        "FM Snare Drum": {
+          "device": "operator",
+          "category": "Drum",
+          "name": "FM Snare Drum",
+          "description": "Simple Snare sound from FM synthesis.",
+          "file": "fm_snare_drum.recipe",
+          "recipe": {
+            "slot1": {
+              "slot_name": "osc_d",
+              "text": "Off",
+              "slot_label": "D"
+            },
+            "slot2": {
+              "slot_name": "osc_c",
+              "text": "White noise waveform with a little attack to simulate the noise of the drum head. The top end content will also help the kick cut through the mix.",
+              "slot_label": "C"
+            },
+            "slot3": {
+              "slot_name": "osc_b",
+              "text": "Fast attack and decay to simulate the sound of a beater striking a drum head",
+              "slot_label": "B"
+            },
+            "slot4": {
+              "slot_name": "osc_a",
+              "text": "This osc is the fundamental tone of the snare. Use a wavefrom with more high end harmonics than a sine. Pitch should be fixed so the snare acts as a consistent anchor sound.",
+              "slot_label": "A"
+            },
+            "slot5": {
+              "slot_name": "lfo",
+              "text": "Off",
+              "slot_label": "LFO"
+            },
+            "slot6": {
+              "slot_name": "pitch",
+              "text": "Turn the Pitch Env up with the envelope set to a high peak with a fast decay. This pitch envelope simulates the warping of a drum head when it is struck by a beater.",
+              "slot_label": "Pitch Env"
+            },
+            "slot7": {
+              "slot_name": "filter",
+              "text": "Experiment with the position of the filter along with it's shaper and applied drive to give character to the kick.",
+              "slot_label": "Filter"
+            },
+            "slot8": {
+              "slot_name": "main",
+              "text": "Voices set to 1. Algorithm 1 works well, but others can produce unique kick sounds with the same fundamental approach.",
+              "slot_label": "Main"
+            }
+          }
+        },
+        "FM Tom Drum": {
+          "device": "operator",
+          "category": "Drum",
+          "name": "FM Tom Drum",
+          "description": "Simple Tom sound from FM synthesis.",
+          "file": "fm_tom_drum.recipe",
+          "recipe": {
+            "slot1": {
+              "slot_name": "osc_d",
+              "text": "Off",
+              "slot_label": "D"
+            },
+            "slot2": {
+              "slot_name": "osc_c",
+              "text": "White noise waveform with a little attack to simulate the noise of the drum head. The top end content will also help the tom to cut through the mix.",
+              "slot_label": "C"
+            },
+            "slot3": {
+              "slot_name": "osc_b",
+              "text": "Fast attack and decay to simulate the sound of a beater striking a drum head",
+              "slot_label": "B"
+            },
+            "slot4": {
+              "slot_name": "osc_a",
+              "text": "This osc is the fundamental tone of the tom. Consider setting the coarse to 0.5 for a deeper sound. Use a simple sine wave to start. If pitch is not fixed, follow the track's root or bassline.",
+              "slot_label": "A"
+            },
+            "slot5": {
+              "slot_name": "lfo",
+              "text": "Off",
+              "slot_label": "LFO"
+            },
+            "slot6": {
+              "slot_name": "pitch",
+              "text": "Turn the Pitch Env up, but not all the way. This will keep the toms grounded in a common percussive tone. Pitch envelope should have a high peak and decay should be pulled out to the desired length.",
+              "slot_label": "Pitch Env"
+            },
+            "slot7": {
+              "slot_name": "filter",
+              "text": "Experiment with the position of the filter along with it's shaper and applied drive to give character to the kick.",
+              "slot_label": "Filter"
+            },
+            "slot8": {
+              "slot_name": "main",
+              "text": "Voices set to 1. Algorithm 1 works well, but others can produce unique kick sounds with the same fundamental approach.",
+              "slot_label": "Main"
+            }
+          }
+        }
+      },
+      "Keys": {
+        "FM Keys - Basic": {
+          "device": "operator",
+          "category": "Keys",
+          "name": "FM Keys - Basic",
+          "description": "Expressive FM Keys",
+          "file": "basic_fm_keys.recipe",
+          "recipe": {
+            "slot1": {
+              "slot_name": "osc_d",
+              "text": "Off",
+              "slot_label": "D"
+            },
+            "slot2": {
+              "slot_name": "osc_c",
+              "text": "Plucky, percussive sound like a keys' hammer. Very short attack and decay with -inf sustain.",
+              "slot_label": "C"
+            },
+            "slot3": {
+              "slot_name": "osc_b",
+              "text": "Copy waveform settings from Osc A and tweak. Turn up Vel. Mixing Osc B and A gives the sound a full, expressive body.",
+              "slot_label": "B"
+            },
+            "slot4": {
+              "slot_name": "osc_a",
+              "text": "Sine wave with short attack (<5ms) and pronounced decay time (~200ms) and sustain (~-20db). Turn up the Vel setting to refine sesitivity and expressive quality. User wavefom to add higher harmonics.",
+              "slot_label": "A"
+            },
+            "slot5": {
+              "slot_name": "lfo",
+              "text": "Give the envelope a long attack and send the LFO to specifc oscillators to give the tone a pitch-shifting 'singing' quality. Experiment!",
+              "slot_label": "LFO"
+            },
+            "slot6": {
+              "slot_name": "pitch",
+              "text": "The pitch envelope can be used as a secondary LFO by pointing it's Dest. B at a desired parameter, adding more movement to the sound.",
+              "slot_label": "Pitch Env"
+            },
+            "slot7": {
+              "slot_name": "filter",
+              "text": "User choice - can define any filter and shaper with drive to further define character and quality of the tone.",
+              "slot_label": "Filter"
+            },
+            "slot8": {
+              "slot_name": "main",
+              "text": "Algo 1. Experiment with  aftertouch and velocity to give the keys a unique character of their own.",
+              "slot_label": "Main"
+            }
+          }
+        },
+        "FM Pad - Basic": {
+          "device": "operator",
+          "category": "Keys",
+          "name": "FM Pad - Basic",
+          "description": "FM Pad with long attack and decay",
+          "file": "fm_pad.recipe",
+          "recipe": {
+            "slot1": {
+              "slot_name": "osc_d",
+              "text": "Off",
+              "slot_label": "D"
+            },
+            "slot2": {
+              "slot_name": "osc_c",
+              "text": "Copy waveform settings from Osc A and B and tweak. Slight variations in multiple waveforms over time creates a complex, evolving sound to the patch. Experiment with using different waveform.",
+              "slot_label": "C"
+            },
+            "slot3": {
+              "slot_name": "osc_b",
+              "text": "Copy waveform settings from Osc A and tweak. Slight variations in multiple waveforms over time creates a complex, evolving sound to the patch. Experiment with using different waveform.",
+              "slot_label": "B"
+            },
+            "slot4": {
+              "slot_name": "osc_a",
+              "text": "Sine wave with very long attack (>500ms), long decay time (>500ms) and slight duck in sustain to create a long soft drone",
+              "slot_label": "A"
+            },
+            "slot5": {
+              "slot_name": "lfo",
+              "text": "Give the envelope a long attack and send the LFO to specifc oscillators to give the tone a pitch-shifting 'singing' quality. Experiment!",
+              "slot_label": "LFO"
+            },
+            "slot6": {
+              "slot_name": "pitch",
+              "text": "The pitch envelope can be used as a secondary LFO by pointing it's Dest. B at a desired parameter, adding more movement to the sound.",
+              "slot_label": "Pitch Env"
+            },
+            "slot7": {
+              "slot_name": "filter",
+              "text": "User choice - can define any filter and shaper with drive to further define character and quality of the tone.",
+              "slot_label": "Filter"
+            },
+            "slot8": {
+              "slot_name": "main",
+              "text": "Algo 1. Experiment with  aftertouch and velocity to give the keys a unique character of their own.",
+              "slot_label": "Main"
+            }
+          }
+        }
+      },
+      "Misc": {
+        "Sub Bass Drop": {
+          "device": "operator",
+          "category": "Misc",
+          "name": "Sub Bass Drop",
+          "description": "Bass Drop Effect Sound for transitions",
+          "file": "sub_bass_drop.recipe",
+          "recipe": {
+            "slot1": {
+              "slot_name": "osc_d",
+              "text": "Off/Experiment",
+              "slot_label": "D"
+            },
+            "slot2": {
+              "slot_name": "osc_c",
+              "text": "As with Osc B, adding more Oscs will add to the complexity and 'dirtiness' of the ending of the bass drop sound.",
+              "slot_label": "C"
+            },
+            "slot3": {
+              "slot_name": "osc_b",
+              "text": "Long attack which will add character to the 'landing' of the bass drop. Experiment with your waveform choice too",
+              "slot_label": "B"
+            },
+            "slot4": {
+              "slot_name": "osc_a",
+              "text": "Sine wave with fast attack and high sustain so the note can be held. Add complexity with more harmonics in the user waveform.",
+              "slot_label": "A"
+            },
+            "slot5": {
+              "slot_name": "lfo",
+              "text": "Experiment here to add interest, movement and complextity. Endless possibilities based on the specifics of your sound.",
+              "slot_label": "LFO"
+            },
+            "slot6": {
+              "slot_name": "pitch",
+              "text": "Turn the Pitch Env up (experiment) with the envelope set to a high peak with a long decay. Make sure sustain is 0 so you land on the correct note.",
+              "slot_label": "Pitch Env"
+            },
+            "slot7": {
+              "slot_name": "filter",
+              "text": "Experiment with the position of the filter along with it's shaper and applied drive to give character to the overall tone.",
+              "slot_label": "Filter"
+            },
+            "slot8": {
+              "slot_name": "main",
+              "text": "The time setting changes the global rate of all envelopes, this can help define the length of the effect. Experiment with algorithms",
+              "slot_label": "Main"
+            }
+          }
+        }
+      }
+    }
+  }
+}
