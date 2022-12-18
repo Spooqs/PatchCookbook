@@ -4,10 +4,20 @@
 }
 
 
-.block-label {
-    display : block;
-}
-
 .labelled-select {
     width : 100%;
 }
+
+.hero-image {
+    width : 50px;
+    height : auto;
+}
+
+.display-block { display : block; }
+.display-inline-block { display : inline-block; height : 100%; }
+
+.font-bold { font-weight: bold; }
+
+.font-big  { font-size : 30pt; }
+
+.p-margin-start { margin-left : 2em; padding-bottom : 25px; }

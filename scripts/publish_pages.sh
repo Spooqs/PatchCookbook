@@ -53,11 +53,11 @@ echo "Copy web files"
 echo "####################################################################"
 
 ( cd ${OUTPUT_REPO_DIR};
-    rm -rf assets *.html *.css *.js ;
+    rm -rf assets *
 )
 
 ( cd ${WEB_TOP_DIR}/${BUILD_DIR};
-    cp -r assets *.html *.css *.js ${OUTPUT_REPO_DIR}
+    cp -r *  ${OUTPUT_REPO_DIR}
 )
 
 ( cd ${OUTPUT_REPO_DIR} ;

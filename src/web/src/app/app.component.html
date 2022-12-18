@@ -1,4 +1,7 @@
-<h1>{{title}}</h1>
+<div class="display-block">
+    <img class="display-inline-block hero-image" src="assets/cookbook-icon-color.svg" />
+    <p class="p-margin-start display-inline-block font-bold font-big">{{title}}</p>
+</div>
 
 <mat-grid-list  cols="3" rowHeight="3:1" gutterSize="20">
     <!--- Device ---->
@@ -28,7 +31,7 @@
                 [items]="categories" (change)="onCategoryChange($event)">
             </ng-select>
         </ng-template>
-        <ng-template #elseCategoryBlock><label class="block-label">Select Device First</label></ng-template>
+        <ng-template #elseCategoryBlock><label class="display-block">Select Device First</label></ng-template>
         </div>
     </mat-grid-tile>
     
@@ -45,7 +48,7 @@
                 [items]="patches" (change)="onPatchChange($event)">
             </ng-select>
         </ng-template>
-        <ng-template #elsePatchBlock><label class="block-label">Select Category First</label></ng-template>
+        <ng-template #elsePatchBlock><label class="display-block">Select Category First</label></ng-template>
         </div>
     </mat-grid-tile>
 </mat-grid-list>
